@@ -5,7 +5,6 @@ import { AppContext } from "./AppContext"
 
 export default function DateSelector () {
     const app = useContext(AppContext)
-    let randomDay = ""
   
     function handleMonthChange (e) {
         app.setMonth(e.target.value)

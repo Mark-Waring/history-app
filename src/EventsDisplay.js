@@ -46,20 +46,20 @@ export default function EventsDisplay (props) {
           case "events": 
           category = events;
       }
-
+        
         return (
             <>
             <h2>Here's What Happened On {app.chosenDate}</h2>
             <div className="events-container">
-                {category.map(event => {
+                {category.map((event, idx) => {
                 return event.pages[0].thumbnail && (
                         <Event
-                            key={event.pages[0].pageid}
+                            key={idx}
                             thumbnail={event.pages[0].thumbnail.source}
                             page={event.pages[0].content_urls.desktop.page}
                             description={event.text}
                             year={event.year}
-                        />
+                        /> 
                     )
                 })}
             </div>

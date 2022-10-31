@@ -8,10 +8,10 @@ export default function Bookmarks () {
         return (
         <>
         <div className="events-container">
-                {app.bookmarks.map(event => {
+                {app.bookmarks.map((event, idx) => {
                 return event.thumbnail && (
                         <Event
-                            key={event.key}
+                            key={idx}
                             thumbnail={event.thumbnail}
                             page={event.page}
                             description={event.description}
