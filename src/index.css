@@ -1,0 +1,93 @@
+body {
+  background-color: #E0E0E0;
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+body.dark {
+    color: white;
+    background-color: black;
+  }
+
+
+h1 {
+    text-align: center;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+
+
+  .nav-bar{
+    background-color: white;
+    height:40px;
+    box-shadow: 10px;
+    padding:5px;
+    
+  }
+  .nav-items {
+    float: right;
+    margin:5px;
+  }
+  
+
+  .light-dark-icon{
+    height:20px;
+    width:20px;
+  }
+
+  
+  .date-selection {
+    display: flex;
+    justify-content: center;
+  }
+  
+  
+  .category-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .category {
+    flex-basis: 20%;
+    text-align: center;
+  }
+  
+  .events-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .event {
+    display: flex;
+    flex-flow: column wrap;
+    flex-basis: 20%;
+    text-align: center;
+    margin: 10px;
+  }
+  
+  .event-image {
+    align-self: center;
+  }
+  
+  .image-link {
+    align-self: center;
+  }
+  
+  .event-caption {
+    display: flex;
+    flex-flow: column wrap;
+  
+  }
+  
+  .event-year {
+    justify-content: baseline;
+  }
+  
+  
+  
+  

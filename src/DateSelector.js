@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { AppContext } from "./AppContext"
+import EventsDisplay from "./EventsDisplay";
 
 
 export default function DateSelector () {
     const app = useContext(AppContext)
+    console.log(app.chosenDate);
   
     function handleMonthChange (e) {
         app.setMonth(e.target.value)
@@ -12,7 +14,11 @@ export default function DateSelector () {
 
     function handleDayChange (e) {
         app.setDay(e.target.value)
-      } 
+      }
+
+      function handleDateSelection () {
+        app.setChosenDate(`${app.month}/${app.day}`)
+      }
       
      console.log(app.month) 
      console.log(app.day)
@@ -20,7 +26,7 @@ export default function DateSelector () {
   
       return (
         <>
-        <h2>Choose Your Date</h2>
+        <h2>Select a Date</h2>
               <div className="date-selection">
                   <div className="date-container">
                       <select id="month" name="month" onChange={handleMonthChange} >
@@ -71,12 +77,12 @@ export default function DateSelector () {
                           <option value="29">29</option>
                           <option value="30">30</option>
                           <option value="31">31</option>
-                      </select>
+                      </select>                      
+                    </div>
+                    <Link to={`${app.month}-${app.day}`}>
+                        <button disabled={app.month.length !== 2 || app.day.length !== 2} onClick={handleDateSelection}>Go</button>
+                    </Link>
                       
-                      </div>
-                      <Link to="events">
-                        <button>Go</button>
-                      </Link>
               </div>
               </>
       )
