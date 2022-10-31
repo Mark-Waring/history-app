@@ -26,7 +26,7 @@ export default function EventsDisplay (props) {
         return <h3>An error has occurred. Please try again later.</h3>
     }
     
-    let {selected, births, deaths, holidays, events} = data
+    const {selected, births, deaths, holidays, events} = data
 
     let category;
 
@@ -46,7 +46,10 @@ export default function EventsDisplay (props) {
           case "events": 
           category = events;
       }
+
         return (
+            <>
+            <h2>Here's What Happened On {app.chosenDate}</h2>
             <div className="events-container">
                 {category.map(event => {
                 return event.pages[0].thumbnail && (
@@ -60,6 +63,7 @@ export default function EventsDisplay (props) {
                     )
                 })}
             </div>
+            </>
             )
     }  
     

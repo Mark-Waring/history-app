@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom"
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import { AppContext } from "./AppContext"
-import EventsDisplay from "./EventsDisplay";
 
 
 export default function DateSelector () {
     const app = useContext(AppContext)
-    console.log(app.chosenDate);
+    let randomDay = ""
   
     function handleMonthChange (e) {
         app.setMonth(e.target.value)
@@ -19,17 +18,14 @@ export default function DateSelector () {
       function handleDateSelection () {
         app.setChosenDate(`${app.month}/${app.day}`)
       }
-      
-     console.log(app.month) 
-     console.log(app.day)
 
-  
+      
       return (
         <>
         <h2>Select a Date</h2>
               <div className="date-selection">
                   <div className="date-container">
-                      <select id="month" name="month" onChange={handleMonthChange} >
+                      <select  id="month" name="month" onChange={handleMonthChange} >
                           <option>month</option>
                           <option value="01">January</option>
                           <option value="02">February</option>
@@ -44,7 +40,7 @@ export default function DateSelector () {
                           <option value="11">November</option>
                           <option value="12">December</option>
                       </select>
-                      <select id="day" name="day" onChange={handleDayChange}>
+                      <select  id="day" name="day" onChange={handleDayChange}>
                           <option>day</option>
                           <option value="01">01</option>
                           <option value="02">02</option>
@@ -80,9 +76,8 @@ export default function DateSelector () {
                       </select>                      
                     </div>
                     <Link to={`${app.month}-${app.day}`}>
-                        <button disabled={app.month.length !== 2 || app.day.length !== 2} onClick={handleDateSelection}>Go</button>
-                    </Link>
-                      
+                        <button  className="date-tool" disabled={app.month.length !== 2 || app.day.length !== 2} onClick={handleDateSelection}>Go</button>
+                    </Link>                
               </div>
               </>
       )

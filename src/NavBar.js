@@ -25,11 +25,11 @@ export default function NavBar () {
 
     return <nav className="nav-bar">
             <Link to="/">
-            <div onClick={handleLogoutClick}className="nav-items">Log out</div>
+            {app.isLoggedIn && <div onClick={handleLogoutClick}className="nav-items">Log out</div>}
             </Link>
             <Link to="/bookmarks">
-                {app.bookmarks.length > 0 && <div className="nav-items">Bookmarks ({app.bookmarks.length})</div>}
-                {app.bookmarks.length === 0 && <div className="nav-items">Bookmarks</div>}
+                {(app.bookmarks.length > 0 && app.isLoggedIn) && <div className="nav-items">Bookmarks ({app.bookmarks.length})</div>}
+                {(app.bookmarks.length === 0 && app.isLoggedIn) && <div className="nav-items">Bookmarks ({app.bookmarks.length})</div>}
             </Link>
             <img onClick={handleThemeClick}src="https://static.thenounproject.com/png/2853779-200.png"alt="light-mode" className="light-dark-icon nav-items"/>
             <Link to="/">

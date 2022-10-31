@@ -6,7 +6,6 @@ import { Outlet } from "react-router-dom";
 
 export default function Main() {
     const app = useContext(AppContext)
-    console.log(app.isLoggedIn)
     
     if (!app.isLoggedIn) {
         return (
