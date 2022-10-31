@@ -1,25 +1,29 @@
 import React from "react";
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
-import CategoryDisplay from "./CategoryDisplay";
-import EventsDisplay from "./EventsDisplay";
 import Main from "./Main";
-import { AppProvider } from "./AppContext";
-
+import ContentDisplay from "./ContentDisplay";
+import "./index.css"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import EventsDisplay from "./EventsDisplay";
+import Bookmarks from "./Bookmarks";
+import NavBar from "./NavBar";
 
 
 function App() {
   
 
-  return (    
-        <Router>     
-          <Routes>
-            <Route path="/" element={<Main />}>
-              <Route path="events" element={<CategoryDisplay />}>
-                <Route path=":type" element={<EventsDisplay />} />
-              </Route>
+  return ( 
+      <Router>
+        <NavBar />
+        <h1>This Day is History</h1>
+        <Routes>
+          <Route exact path="bookmarks" element={<Bookmarks />}/>
+          <Route path="/" element={<Main />}>
+            <Route path=":date" element={<ContentDisplay />}>
+              <Route path=":category" element={<EventsDisplay />} />
             </Route>
-          </Routes>
-        </Router>      
+          </Route>
+        </Routes>
+      </Router> 
   )
 }
 

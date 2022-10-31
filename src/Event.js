@@ -1,20 +1,26 @@
-import {useContext} from "react";
-import { Link } from "react-router-dom";
-import {AppContext} from "./AppContext.js";
+import App from "./App"
+import { AppContext } from "./AppContext"
+import { useContext } from "react"
 
 export default function Event (props) {
-  <h5>Event showing up now</h5>
+  const app = useContext(AppContext)
+
+  
+
+  return (
+    ( <div className="event">
+      <br/>
+        <a href={props.page} target="blank" className="image-link">
+          <img className ="event-image" src={props.thumbnail} alt={props.description} key={props.key}/>
+        </a>
+        <div className="event-caption" key={props.key}>
+            <h3 className="event-year"></h3>
+            <p>{props.description}</p>
+            <a href={props.page} target="blank" key={props.key}>Learn More</a>
+        </div>
+        <br />
+        <button onClick={() => app.onBookmarkAdd(props)}>Bookmark</button>
+      </div>
+   )
+  )
 }
-//   return (
-//     ( <div className="event">
-//             <a href="" target="blank" className="image-link">
-//     <img className ="event-image" src="" alt="" key=""/>
-// </a>
-//             <div className="event-caption" key="">
-//                 <h3 className="event-year"></h3>
-//                 <p>""</p>
-//                 <a href="" target="blank" key="">Learn More</a>
-//             </div>
-//         </div>
-//         )
-//   );

@@ -1,12 +1,17 @@
-import { Link } from "react-router-dom";
+import { AppContext } from "./AppContext";
+import { useContext } from "react";
 
 export default function LoginForm() {
+    const app = useContext(AppContext);
+
+    function handleLoginClick() {
+        app.setIsLoggedIn(true)
+    }
+    
     return (
-      <>
-        <h3>Please log in</h3>
-        <Link to="/">
-          <button>Log in</button>
-        </Link>
-      </>
+      <div className="login-form">
+        <h3 className="login-items">Please log in</h3>
+        <button className="login-items login-button" onClick={handleLoginClick}>Log in</button>
+      </div>
     )
   }

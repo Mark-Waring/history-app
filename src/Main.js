@@ -1,29 +1,23 @@
-import {BrowserRouter, Route, Routes, Outlet} from "react-router-dom"
+import { AppContext } from "./AppContext";
+import { useContext } from "react";
+import LoginForm from "./LoginForm";
 import DateSelector from "./DateSelector";
-import CategoryDisplay from "./CategoryDisplay";
-import EventsDisplay from "./EventsDisplay";
-import { useState } from "react";
+import { Outlet } from "react-router-dom";
 
 export default function Main() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-
- function handleLoginClick () {
-      setIsLoggedIn(true);
-    } 
-
-  if(!isLoggedIn) {
-    return (
-      <>
-        <h3>Please log in</h3>        
-        <button onClick={handleLoginClick}>Log in</button>
-        
-      </>
-    )
+    const app = useContext(AppContext)
+    console.log(app.isLoggedIn)
+    
+    if (!app.isLoggedIn) {
+        return (
+            <LoginForm />
+        )
     }
     return (
         <>
-        <DateSelector />
-        <Outlet />
+            <DateSelector />
+            <Outlet />
         </>
     )
+
 }

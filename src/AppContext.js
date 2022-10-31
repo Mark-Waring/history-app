@@ -3,67 +3,37 @@ import {useState, createContext} from "react";
 export const AppContext = createContext();
 
 export function AppProvider(props) {
-    const [month, setMonth] = useState(null);
-    const [day, setDay] = useState(null);
-    const [user, setUser] = useState("")
-
+    const [month, setMonth] = useState("0");
+    const [day, setDay] = useState("0");
+    const [chosenDate, setChosenDate] = useState(null)
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [isBookmarked, setIsBookmarked] = useState(false);
+    const [bookmarks, setBookmarks] = useState([]);
+    const [isDarkTheme, setIsDarkTheme] = useState(false)
     
-
-  // function handleProductDelete(id) {
-  //   const updatedCart = cart.filter((product) => product.id !== id);
-  //   setCart(updatedCart);
-  // }
-
-  // function handleProductAdd(newProduct) {
-  //   // check if item exists
-  //   const existingProduct = cart.find(
-  //     (product) => product.id === newProduct.id
-  //   );
-  //   if (existingProduct) {
-  //     // increase quantity
-  //     const updatedCart = cart.map((product) => {
-  //       if (product.id === newProduct.id) {
-  //         return {
-  //           ...product,
-  //           quantity: product.quantity + 1,
-  //         };
-  //       }
-  //       return product;
-  //     });
-  //     setCart(updatedCart);
-  //   } else {
-  //     // product is new to the cart
-  //     setCart([
-  //       ...cart,
-  //       {
-  //         ...newProduct,
-  //         quantity: 1,
-  //       },
-  //     ]);
-  //   }
-  // }
-
-
-  // function getProductFromCart(productId) {
-  //   return cart.find(
-  //     (product) => product.id === productId
-  //   )
-  // }
-
-  // function getCartCount() {
-  //   return cart.reduce(
-  //   (total, product) => total + product.quantity,
-  //   0
-  // );
-  // }
+    function handleBookmarkAdd(newBookmark) {
+          setBookmarks([
+            ...bookmarks,
+            {...newBookmark,},
+          ]);
+        }
 
     const value = {
         month,
         setMonth,
         day,
         setDay,
-        user,
-        setUser
+        isLoggedIn,
+        setIsLoggedIn,
+        chosenDate,
+        setChosenDate,
+        isBookmarked,
+        setIsBookmarked,
+        bookmarks,
+        setBookmarks,
+        onBookmarkAdd: handleBookmarkAdd,
+        isDarkTheme,
+        setIsDarkTheme
     };
 
     return (
