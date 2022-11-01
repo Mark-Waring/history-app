@@ -15,10 +15,10 @@ function App() {
         <NavBar />
         <h1>This Day is History</h1>
         <Routes>
-          <Route exact path="bookmarks" element={<Bookmarks />}/>
           <Route path="/" element={<Main />}>            
               <Route path=":category" element={<EventsDisplay />} />            
           </Route>
+          <Route exact path="bookmarks" element={<Bookmarks />}/>
         </Routes>
       </Router> 
   )

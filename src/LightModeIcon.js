@@ -1,5 +1,5 @@
 
 
-export default function LightModeIcon(props) {
-    return <img onClick={props.onThemeClick} src={props.src} alt="light-mode-icon" className="light-dark-icon nav-items"/>
+export default function LightModeIcon({onThemeClick, src}) {
+    return <img onClick={onThemeClick} src={src} alt="theme-icon" className="light-dark-icon nav-items"/>
 }

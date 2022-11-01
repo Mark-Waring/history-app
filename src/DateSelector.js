@@ -1,22 +1,34 @@
 import { Link } from "react-router-dom"
 import { useContext } from "react"
 import { AppContext } from "./AppContext"
+import { useState } from "react"
 
 
 export default function DateSelector () {
     const app = useContext(AppContext)
+    const [month, setMonth] = useState("0");
+    const [day, setDay] = useState("0");
+    
+    
+    // const todayDate = new Date()
+    // let todayMonth = todayDate.getMonth() + 1
+    // let todayDay = todayDate.getDay() - 1
   
     function handleMonthChange (e) {
-        app.setMonth(e.target.value)
+        setMonth(e.target.value)
     } 
 
     function handleDayChange (e) {
-        app.setDay(e.target.value)
+        setDay(e.target.value)
       }
 
       function handleDateSelection () {
-        app.setChosenDate(`${app.month}/${app.day}`)
+        app.setChosenDate(`${month}/${day}`)
       }
+
+      // function handleTodayClick () {
+      //   app.setChosenDate(`${todayMonth}/${todayDay}`)
+      // }
 
       
       return (
@@ -24,6 +36,9 @@ export default function DateSelector () {
         <h2>Select a Date</h2>
               <div className="date-selection">
                   <div className="date-container">
+                    {/* <Link to="/">
+                      <button onClick={handleTodayClick}>Today</button>
+                    </Link> */}
                       <select  id="month" name="month" onChange={handleMonthChange} >
                           <option>month</option>
                           <option value="01">January</option>
@@ -75,7 +90,7 @@ export default function DateSelector () {
                       </select>                      
                     </div>
                     <Link to="/">
-                        <button  className="date-tool" disabled={app.month.length !== 2 || app.day.length !== 2} onClick={handleDateSelection}>Go</button>
+                        <button  className="date-tool" disabled={month.length !== 2 || day.length !== 2} onClick={handleDateSelection}>Go</button>
                     </Link>                
               </div>
               </>
