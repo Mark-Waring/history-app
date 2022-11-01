@@ -34,7 +34,7 @@ export default function NavBar () {
             </Link>
             {!app.isDarkTheme && <LightModeIcon onThemeClick={handleThemeClick} src="https://static.thenounproject.com/png/2853779-200.png" />}
             {app.isDarkTheme && <LightModeIcon onThemeClick={handleThemeClick} src="https://cdn3.iconfinder.com/data/icons/ink-basic/35/dark-mode-512.png" />}
-            <Link to="/">
+            <Link to="/" onClick={() => app.setChosenDate(null)}>
             <div>Home</div>
             </Link>          
         </nav>

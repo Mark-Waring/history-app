@@ -7,7 +7,11 @@ export default function Bookmarks () {
     const app = useContext(AppContext)
         return (
         <>
-        <h2>Bookmarked Events</h2>
+        {!app.isLoggedIn && <h2>You must be logged in to view this content</h2>}
+        {app.isLoggedIn && app.bookmarks.length === 0 && 
+            <h2>You have no bookmarked events right now</h2>
+        }
+        {app.isLoggedIn &&
         <div className="events-container">
                 {app.bookmarks.map((event, idx) => {
                 return event.thumbnail && (
@@ -20,7 +24,7 @@ export default function Bookmarks () {
                         />
                     )
                 })}
-            </div>
+            </div>}
             </>
             )
     }
