@@ -19,15 +19,10 @@ export function AppProvider(props) {
         }
 
      
-    // function handleBookmarkRemove(props) {
-    //     const updatedBookmarks = bookmarks.filter((bookmark) => {
-    //         console.log(bookmark);
-    //         return bookmark !== props;
-    //     });
-    //     console.log(props)
-    //     // setBookmarks(updatedBookmarks);
-        
-    //   }
+    function handleBookmarkRemove(props) {
+        const updatedBookmarks = bookmarks.filter((bookmark) => props.description !== bookmark.description);
+        setBookmarks(updatedBookmarks);
+      }
 
     const value = {
         month,
@@ -43,6 +38,7 @@ export function AppProvider(props) {
         bookmarks,
         setBookmarks,
         onBookmarkAdd: handleBookmarkAdd,
+        onBookmarkRemove: handleBookmarkRemove,
         isDarkTheme,
         setIsDarkTheme
     };

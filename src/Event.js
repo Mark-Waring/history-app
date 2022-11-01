@@ -21,6 +21,7 @@ export default function Event ({thumbnail, description, page, year}) {
         </div>
         <br />
         {params.category && <button onClick={() => app.onBookmarkAdd({thumbnail, description, page, year})}>Bookmark</button>}
+        {!params.category && <button onClick={() => app.onBookmarkRemove({thumbnail, description, page, year})}>Remove Bookmark</button>}
       </div>
    )
   )
