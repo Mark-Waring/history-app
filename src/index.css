@@ -13,20 +13,16 @@ body.dark {
 
 
 
-h1 {
+h1, h2 {
     text-align: center;
   }
   
-  h2 {
-    text-align: center;
-  }
 
 
   .nav-bar{
     background-color: white;
     height:40px;
-    box-shadow: 10px;
-    padding:5px;
+    padding: 5px;
     
   }
   .nav-items {
@@ -36,13 +32,20 @@ h1 {
   
 
   .light-dark-icon{
-    height:20px;
-    width:20px;
+    height: 20px;
+    width: 20px;
+  }
+
+  .category-container,
+  .date-selection,
+  .events-container,
+  .event,
+  .event-caption {
+    display: flex;
   }
 
   
   .date-selection {
-    display: flex;
     justify-content: center;
   }
 
@@ -52,41 +55,35 @@ h1 {
   
   
   .category-container {
-    display: flex;
     flex-wrap: wrap;
   }
   
-  .category {
+  .category,
+  .event {
     flex-basis: 20%;
+  }
+  .category,
+  .event {
     text-align: center;
   }
   
   .events-container {
-    display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
   }
   
+  .event-caption,
   .event {
-    display: flex;
     flex-flow: column wrap;
-    flex-basis: 20%;
-    text-align: center;
+  
+  }
+  .event {
     margin: 10px;
   }
   
-  .event-image {
-    align-self: center;
-  }
-  
+  .event-image,
   .image-link {
     align-self: center;
-  }
-  
-  .event-caption {
-    display: flex;
-    flex-flow: column wrap;
-  
   }
   
   .event-year {
