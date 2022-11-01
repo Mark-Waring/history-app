@@ -46,7 +46,7 @@ export default function EventsDisplay () {
           case "events": 
           category = events;
       }
-        
+      
         return ( 
             <>
             <h2>Here's What Happened On {app.chosenDate}</h2>
