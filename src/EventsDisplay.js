@@ -6,7 +6,7 @@ import Event from "./Event";
 
 
 
-export default function EventsDisplay (props) {
+export default function EventsDisplay () {
     const app = useContext(AppContext)
     let params = useParams()
     const eventType = params.category

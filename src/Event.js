@@ -2,7 +2,7 @@ import { AppContext } from "./AppContext"
 import { useContext } from "react"
 import { useParams } from "react-router-dom"
 
-export default function Event (props) {
+export default function Event ({thumbnail, description, page, year}) {
   let params = useParams()
   const app = useContext(AppContext)
 
@@ -11,16 +11,16 @@ export default function Event (props) {
   return (
     ( <div className="event">
       <br/>
-        <a href={props.page} target="blank" className="image-link">
-          <img className ="event-image" src={props.thumbnail} alt={props.description} key={props.key}/>
+        <a href={page} target="blank" className="image-link">
+          <img className ="event-image" src={thumbnail} alt={description}/>
         </a>
-        <div className="event-caption" id={props.key}>
-            <h3 className="event-year">{props.year}</h3>
-            <p>{props.description}</p>
-            <a href={props.page} target="blank" key={props.key}>Learn More</a>
+        <div className="event-caption">
+            <h3 className="event-year">{year}</h3>
+            <p>{description}</p>
+            <a href={page} target="blank">Learn More</a>
         </div>
         <br />
-        {params.category && <button onClick={() => app.onBookmarkAdd(props)}>Bookmark</button>}
+        {params.category && <button onClick={() => app.onBookmarkAdd({thumbnail, description, page, year})}>Bookmark</button>}
       </div>
    )
   )
