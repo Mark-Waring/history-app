@@ -18,6 +18,17 @@ export function AppProvider(props) {
           ]);
         }
 
+     
+    // function handleBookmarkRemove(props) {
+    //     const updatedBookmarks = bookmarks.filter((bookmark) => {
+    //         console.log(bookmark);
+    //         return bookmark !== props;
+    //     });
+    //     console.log(props)
+    //     // setBookmarks(updatedBookmarks);
+        
+    //   }
+
     const value = {
         month,
         setMonth,
