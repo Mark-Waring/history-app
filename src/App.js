@@ -1,6 +1,5 @@
 import React from "react";
 import Main from "./Main";
-import ContentDisplay from "./ContentDisplay";
 import "./index.css"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EventsDisplay from "./EventsDisplay";
@@ -17,10 +16,8 @@ function App() {
         <h1>This Day is History</h1>
         <Routes>
           <Route exact path="bookmarks" element={<Bookmarks />}/>
-          <Route path="/" element={<Main />}>
-            <Route path=":date" element={<ContentDisplay />}>
-              <Route path=":category" element={<EventsDisplay />} />
-            </Route>
+          <Route path="/" element={<Main />}>            
+              <Route path=":category" element={<EventsDisplay />} />            
           </Route>
         </Routes>
       </Router> 

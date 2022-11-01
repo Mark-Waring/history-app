@@ -7,7 +7,7 @@ export default function CategoryDisplay () {
         <>
         <div className="category-container">
             <span className="category">
-                <Link to="selected">
+                <Link to="events">
                     Historical Events
                 </Link>
             </span>
@@ -27,7 +27,7 @@ export default function CategoryDisplay () {
                 </Link>
                 </span>
             <span className="category">
-                <Link to="events">
+                <Link to="selected">
                     Other Events
                 </Link>
                 </span>

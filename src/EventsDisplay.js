@@ -47,7 +47,7 @@ export default function EventsDisplay () {
           category = events;
       }
         
-        return (
+        return ( 
             <>
             <h2>Here's What Happened On {app.chosenDate}</h2>
             <div className="events-container">

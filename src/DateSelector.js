@@ -74,7 +74,7 @@ export default function DateSelector () {
                           {app.month !== "02" && app.month !== "04" && app.month !== "06" && app.month !== "09" && app.month !== "11" && <option value="31">31</option>}
                       </select>                      
                     </div>
-                    <Link to={`${app.month}-${app.day}`}>
+                    <Link to="/">
                         <button  className="date-tool" disabled={app.month.length !== 2 || app.day.length !== 2} onClick={handleDateSelection}>Go</button>
                     </Link>                
               </div>

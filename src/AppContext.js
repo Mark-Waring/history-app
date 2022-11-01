@@ -19,8 +19,8 @@ export function AppProvider(props) {
         }
 
      
-    function handleBookmarkRemove(props) {
-        const updatedBookmarks = bookmarks.filter((bookmark) => props.description !== bookmark.description);
+    function handleBookmarkRemove({description}) {
+        const updatedBookmarks = bookmarks.filter((bookmark) => description !== bookmark.description);
         setBookmarks(updatedBookmarks);
       }
 

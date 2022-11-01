@@ -7,6 +7,7 @@ export default function Bookmarks () {
     const app = useContext(AppContext)
         return (
         <>
+        <h2>Bookmarked Events</h2>
         <div className="events-container">
                 {app.bookmarks.map((event, idx) => {
                 return event.thumbnail && (
