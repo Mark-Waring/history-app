@@ -85,8 +85,8 @@ export default function DateSelector () {
                           <option value="27">27</option>
                           <option value="28">28</option>
                           <option value="29">29</option>
-                          {app.month !== "02" && <option value="30">30</option>}
-                          {app.month !== "02" && app.month !== "04" && app.month !== "06" && app.month !== "09" && app.month !== "11" && <option value="31">31</option>}
+                          {month !== "02" && <option value="30">30</option>}
+                          {month !== "02" && month !== "04" && month !== "06" && month !== "09" && month !== "11" && <option value="31">31</option>}
                       </select>                      
                     </div>
                     <Link to="/">
