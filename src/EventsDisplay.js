@@ -8,8 +8,7 @@ import Event from "./Event";
 
 export default function EventsDisplay () {
     const app = useContext(AppContext)
-    let params = useParams()
-    const eventType = params.category
+    const category = useParams().category
     
 
     const { isLoading, error, data } = useQuery(["eventData"], () =>
@@ -17,41 +16,20 @@ export default function EventsDisplay () {
         (res) => res.json()
       )
     );
-// 
+
     if (isLoading) {
         return <h3>Loading....</h3>
     }
-// 
+    
     if (error) {
         return <h3>An error has occurred. Please try again later.</h3>
     }
     
-    const {selected, births, deaths, holidays, events} = data
-
-    let category;
-
-    switch (eventType) {
-        case "selected":
-          category = selected;
-          break;
-        case "births":
-          category = births;
-          break;
-          case "deaths": 
-          category = deaths;
-          break;
-          case "holidays": 
-          category = holidays;
-          break;
-          case "events": 
-          category = events;
-      }
-      
         return ( 
             <>
             <h2>Here's What Happened On {app.chosenDate}</h2>
             <div className="events-container">
-                {category.map((event, idx) => {
+                {data[category].map((event, idx) => {
                 return event.pages[0].thumbnail && (
                         <Event
                             key={idx}

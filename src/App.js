@@ -9,7 +9,6 @@ import NavBar from "./NavBar";
 
 function App() {
   
-
   return ( 
       <Router>
         <NavBar />
@@ -20,7 +19,7 @@ function App() {
           </Route>
           <Route exact path="bookmarks" element={<Bookmarks />}/>
         </Routes>
-      </Router> 
+      </Router>
   )
 }
 
