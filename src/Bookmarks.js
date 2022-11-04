@@ -17,6 +17,7 @@ export default function Bookmarks () {
                 return event.thumbnail && (
                         <Event
                             key={idx}
+                            id={idx}
                             thumbnail={event.thumbnail}
                             page={event.page}
                             description={event.description}

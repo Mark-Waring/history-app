@@ -9,17 +9,21 @@ export function AppProvider(props) {
     const [isBookmarked, setIsBookmarked] = useState(false);
     const [bookmarks, setBookmarks] = useState([]);
     const [isDarkTheme, setIsDarkTheme] = useState(false)
+    const [monthName, setMonthName] = useState("")
     
     function handleBookmarkAdd(newBookmark) {
           setBookmarks([
             ...bookmarks,
-            {...newBookmark,},
+            {...newBookmark},
           ]);
         }
 
      
     function handleBookmarkRemove({description}) {
-        const updatedBookmarks = bookmarks.filter((bookmark) => description !== bookmark.description);
+        const updatedBookmarks = bookmarks.filter((bookmark) => {
+          console.log(bookmark)
+          return description !== bookmark.description
+        });
         setBookmarks(updatedBookmarks);
       }
 
@@ -35,7 +39,9 @@ export function AppProvider(props) {
         onBookmarkAdd: handleBookmarkAdd,
         onBookmarkRemove: handleBookmarkRemove,
         isDarkTheme,
-        setIsDarkTheme
+        setIsDarkTheme,
+        monthName,
+        setMonthName
     };
 
     return (
