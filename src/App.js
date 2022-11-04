@@ -12,7 +12,7 @@ function App() {
   return ( 
       <Router>
         <NavBar />
-        <h1>This Day is History</h1>
+        <h1>This Day Is History</h1>
         <Routes>
           <Route path="/" element={<Main />}>            
               <Route path=":category" element={<Events />} />            

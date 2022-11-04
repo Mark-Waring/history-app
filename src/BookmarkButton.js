@@ -1,4 +1,4 @@
 
-export default function BookmarkButton (props) {
-    return <button onClick={props.onBookmarkClick}>{props.children}</button>
+export default function BookmarkButton ({onBookmarkClick, children}) {
+    return <button onClick={onBookmarkClick}>{children}</button>
 }

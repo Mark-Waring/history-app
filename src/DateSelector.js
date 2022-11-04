@@ -5,7 +5,7 @@ import { useState } from "react"
 
 
 export default function DateSelector () {
-    const app = useContext(AppContext)
+    const { setChosenDate} = useContext(AppContext)
     const [month, setMonth] = useState(null);
     const [day, setDay] = useState(null);
     
@@ -24,7 +24,7 @@ export default function DateSelector () {
       }
 
     function handleDateSelection () {
-        app.setChosenDate(`${month}/${day}`)
+        setChosenDate(`${month}/${day}`)
       }
 
  // function handleTodayClick () {
@@ -88,7 +88,7 @@ export default function DateSelector () {
                           <option value="28">28</option>
                           <option value="29">29</option>
                           {month !== "02" && <option value="30">30</option>}
-                          {month !== "04" && month !== "06" && month !== "09" && month !== "11" && <option value="31">31</option>}
+                          {month !== "02" && month !== "04" && month !== "06" && month !== "09" && month !== "11" && <option value="31">31</option>}
                       </select>                      
                     </div>
                     <Link to="/">

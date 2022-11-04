@@ -4,16 +4,16 @@ import Event from "./Event"
 
 
 export default function Bookmarks () {
-    const app = useContext(AppContext)
+    const { bookmarks, isLoggedIn } = useContext(AppContext)
         return (
         <>
-        {!app.isLoggedIn && <h2>You must be logged in to view this content</h2>}
-        {app.isLoggedIn && app.bookmarks.length === 0 && 
+        {!isLoggedIn && <h2>You must be logged in to view this content</h2>}
+        {isLoggedIn && bookmarks.length === 0 && 
             <h2>You have no bookmarked events right now</h2>
         }
-        {app.isLoggedIn &&
+        {isLoggedIn &&
         <div className="events-container">
-                {app.bookmarks.map((event, idx) => {
+                {bookmarks.map((event, idx) => {
                 return event.thumbnail && (
                         <Event
                             key={idx}

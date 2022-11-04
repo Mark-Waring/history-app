@@ -3,10 +3,10 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 export default function LoginForm() {
-    const app = useContext(AppContext);
+    const { setIsLoggedIn } = useContext(AppContext);
 
     function handleLoginClick() {
-        app.setIsLoggedIn(true)
+        setIsLoggedIn(true)
     }
     
     return (

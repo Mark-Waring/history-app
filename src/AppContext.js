@@ -9,7 +9,6 @@ export function AppProvider(props) {
     const [isBookmarked, setIsBookmarked] = useState(false);
     const [bookmarks, setBookmarks] = useState([]);
     const [isDarkTheme, setIsDarkTheme] = useState(false)
-    const [monthName, setMonthName] = useState("")
     
     function handleBookmarkAdd(newBookmark) {
           setBookmarks([
@@ -39,9 +38,7 @@ export function AppProvider(props) {
         onBookmarkAdd: handleBookmarkAdd,
         onBookmarkRemove: handleBookmarkRemove,
         isDarkTheme,
-        setIsDarkTheme,
-        monthName,
-        setMonthName
+        setIsDarkTheme
     };
 
     return (
