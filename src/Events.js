@@ -27,8 +27,7 @@ export default function Events() {
   if (error) {
     return <div>Something went wrong</div>;
   }
-  console.log(displayedDate)
-
+  
   return (
     <>
       {
