@@ -10,11 +10,7 @@ export default function NavBar () {
     function handleLogoutClick() {
         setIsLoggedIn(false)
         setBookmarks([])
-        setChosenDate(null);
-    }
-
-    function handleThemeClick () {
-        setIsDarkTheme(!isDarkTheme);
+        setChosenDate("");
     }
 
     useEffect(() => {
@@ -33,8 +29,8 @@ export default function NavBar () {
               {bookmarks.length > 0 && <div className="nav-items">Bookmarks ({bookmarks.length})</div>}
               {bookmarks.length === 0 && <div className="nav-items">Bookmarks</div>}
             </Link>
-              {!isDarkTheme && <LightModeIcon onThemeClick={handleThemeClick} src="https://static.thenounproject.com/png/2853779-200.png" />}
-              {isDarkTheme && <LightModeIcon onThemeClick={handleThemeClick} src="https://cdn3.iconfinder.com/data/icons/ink-basic/35/dark-mode-512.png" />}
+              {!isDarkTheme && <LightModeIcon src="https://static.thenounproject.com/png/2853779-200.png" />}
+              {isDarkTheme && <LightModeIcon src="https://cdn3.iconfinder.com/data/icons/ink-basic/35/dark-mode-512.png" />}
             <Link to="/" onClick={() => setChosenDate("")}>
               <div>Home</div>
             </Link>          
