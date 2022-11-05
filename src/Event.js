@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom"
 export default function Event ({thumbnail, description, page, year}) {
   let params = useParams()
   const { onBookmarkAdd, onBookmarkRemove} = useContext(AppContext)
-
   return (
     ( <div className="event">
       <br/>
