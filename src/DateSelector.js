@@ -40,7 +40,7 @@ export default function DateSelector () {
               <div className="date-selection">
                   <div className="date-container">
                     <Link to="/">
-                      <button className="today-button" onClick={handleTodayClick}>Today</button>
+                      <button className="date-button" onClick={handleTodayClick}>Today</button>
                     </Link>
                       <select  id="month" name="month" onChange={handleMonthChange} >
                           <option>month</option>
@@ -93,7 +93,7 @@ export default function DateSelector () {
                       </select>                      
                     </div>
                     <Link to="/">
-                        <button  className="date-tool" disabled={!month || !day} onClick={handleDateSelection}>Go</button>
+                        <button  className="date-button" disabled={!month || !day} onClick={handleDateSelection}>Go</button>
                     </Link>                
               </div>
               </>

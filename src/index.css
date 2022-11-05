@@ -19,16 +19,15 @@ h1, h2 {
   
 
 
-  .nav-bar{
+  .nav-bar {
     background-color: white;
     height:40px;
     padding: 5px;
     
   }
   
-  .date-tool,
-  .nav-items,
-  .today-button {
+  .date-button,
+  .nav-items {
     margin: 5px;
   }
   
