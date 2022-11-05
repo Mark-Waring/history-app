@@ -38,7 +38,7 @@ export default function DateSelector () {
   }
 
   useEffect(() => {
-    if ((month === "02" & parseInt(day) > 30) || (monthHas30Days && day === "31")) {
+    if ((month === "02" & parseInt(day) >= 30) || (monthHas30Days && day === "31")) {
       setDay("")
     }
   }, [month, day, monthHas30Days])
