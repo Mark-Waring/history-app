@@ -16,7 +16,7 @@ export default function Events() {
       if (res.ok) {
         return res.json();
       }
-      throw "Something went wrong";
+      return <div>Something went wrong</div>;
     })
   );
 
