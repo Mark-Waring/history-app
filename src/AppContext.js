@@ -21,7 +21,6 @@ export function AppProvider(props) {
      
     function handleBookmarkRemove({description}) {
         const updatedBookmarks = bookmarks.filter((bookmark) => {
-          console.log(bookmark)
           return description !== bookmark.description
         });
         setBookmarks(updatedBookmarks);

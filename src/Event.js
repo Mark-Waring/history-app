@@ -3,7 +3,7 @@ import { useContext } from "react"
 import { useParams } from "react-router-dom"
 
 export default function Event ({thumbnail, description, page, year}) {
-  let params = useParams()
+  const { category } = useParams()
   const { onBookmarkAdd, onBookmarkRemove} = useContext(AppContext)
   return (
     ( <div className="event">
@@ -17,8 +17,8 @@ export default function Event ({thumbnail, description, page, year}) {
             <a href={page} target="blank">Learn More</a>
         </div>
         <br />
-        {params.category && <button onClick={() => onBookmarkAdd({thumbnail, description, page, year})}>Bookmark</button>}
-        {!params.category && <button onClick={() => onBookmarkRemove({thumbnail, description, page, year})}>Remove Bookmark</button>}
+        {category && <button onClick={() => onBookmarkAdd({thumbnail, description, page, year})}>Bookmark</button>}
+        {!category && <button onClick={() => onBookmarkRemove({thumbnail, description, page, year})}>Remove Bookmark</button>}
       </div>
    )
   )
