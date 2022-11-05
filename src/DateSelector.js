@@ -6,6 +6,13 @@ export default function DateSelector () {
   const { setChosenDate, chosenDate, setDisplayedDate } = useContext(AppContext)
   const [month, setMonth] = useState("");
   const [day, setDay] = useState("");
+  const monthNumber = parseInt(chosenDate.slice(0, 2));
+  const dayNumber = parseInt(chosenDate.slice(3))
+  let monthHas30Days = false;
+
+  if (month === "04" || month === "06" || month === "09" || month === "11") {
+    monthHas30Days = true
+  } else monthHas30Days = false;
   
   const monthNames = [
   "January",
@@ -28,10 +35,17 @@ export default function DateSelector () {
 
   function handleMonthChange (e) {
       setMonth(e.target.value)
-  } 
+  }
+
+  useEffect(() => {
+    if ((month === "02" & parseInt(day) > 30) || (monthHas30Days && day === "31")) {
+      setDay("")
+    }
+  }, [month, day, monthHas30Days])
 
   function handleDayChange (e) {
       setDay(e.target.value)
+      
   }
 
   function handleDateSelection () {
@@ -43,10 +57,10 @@ export default function DateSelector () {
   }
 
   useEffect (() => {
-    const monthNumber = parseInt(chosenDate.slice(0, 2));
-    const dayNumber = parseInt(chosenDate.slice(3))
     setDisplayedDate(`${monthNames[(monthNumber) - 1]} ${dayNumber}`)
-  }, [chosenDate])
+  })
+
+
   
   return (
     <>
