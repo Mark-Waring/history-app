@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom"
 import { useParams } from "react-router-dom"
+import { useContext } from "react"
+import { AppContext } from "./AppContext"
 
 export default function CategoryDisplay () {
     const params = useParams()
+    const { displayedDate } = useContext(AppContext)
     return (
         <>
         <div className="category-container">
@@ -32,7 +35,7 @@ export default function CategoryDisplay () {
                 </Link>
                 </span>
                 </div>
-                {!params.category && <h2>Select a Category to View The Events</h2>}
+                {!params.category && <h2>Select a Category to View Events for {displayedDate}</h2>}
             </>
         
     )

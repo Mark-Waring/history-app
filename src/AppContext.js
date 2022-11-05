@@ -4,11 +4,12 @@ export const AppContext = createContext();
 
 export function AppProvider(props) {
     
-    const [chosenDate, setChosenDate] = useState(null)
+    const [chosenDate, setChosenDate] = useState("")
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [isBookmarked, setIsBookmarked] = useState(false);
     const [bookmarks, setBookmarks] = useState([]);
-    const [isDarkTheme, setIsDarkTheme] = useState(false)
+    const [isDarkTheme, setIsDarkTheme] = useState(false);
+    const [displayedDate, setDisplayedDate] = useState(null);
     
     function handleBookmarkAdd(newBookmark) {
           setBookmarks([
@@ -38,7 +39,9 @@ export function AppProvider(props) {
         onBookmarkAdd: handleBookmarkAdd,
         onBookmarkRemove: handleBookmarkRemove,
         isDarkTheme,
-        setIsDarkTheme
+        setIsDarkTheme,
+        displayedDate,
+        setDisplayedDate
     };
 
     return (
