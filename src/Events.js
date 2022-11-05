@@ -56,7 +56,6 @@ export default function Events() {
             event.pages[0].thumbnail && (
               <Event
                 key={idx}
-                id={idx}
                 thumbnail={event.pages[0].thumbnail.source}
                 page={event.pages[0].content_urls.desktop.page}
                 description={event.text}
