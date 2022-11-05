@@ -14,7 +14,7 @@ export default function NavBar () {
     }
 
     function handleThemeClick () {
-        setIsDarkTheme(isDarkTheme);
+        setIsDarkTheme(!isDarkTheme);
     }
 
     useEffect(() => {
