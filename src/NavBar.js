@@ -5,7 +5,7 @@ import { useEffect } from "react"
 import LightModeIcon from "./LightModeIcon"
 
 export default function NavBar () {
-    const { isDarkTheme, setIsDarkTheme, isLoggedIn, setIsLoggedIn, setBookmarks, bookmarks, setChosenDate  } = useContext(AppContext);
+    const { isDarkTheme, isLoggedIn, setIsLoggedIn, setBookmarks, bookmarks, setChosenDate  } = useContext(AppContext);
 
     function handleLogoutClick() {
         setIsLoggedIn(false)
