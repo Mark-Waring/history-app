@@ -10,9 +10,9 @@ export default function DateSelector () {
     const [day, setDay] = useState(null);
     
     
-    // const todayDate = new Date()
-    // let todayMonth = todayDate.getMonth() + 1
-    // let todayDay = todayDate.getDay() - 1
+    const todayDate = new Date()
+    let todayMonth = todayDate.getMonth() + 1
+    let todayDay = todayDate.getDay() - 1
   
     function handleMonthChange (e) {
         setMonth(e.target.value)
@@ -25,11 +25,12 @@ export default function DateSelector () {
 
     function handleDateSelection () {
         setChosenDate(`${month}/${day}`)
+        
       }
 
- // function handleTodayClick () {
- //   app.setChosenDate(`${todayMonth}/${todayDay}`)
- // }
+ function handleTodayClick () {
+   setChosenDate(`${todayMonth}/${todayDay}`)
+ }
     
     
       
@@ -38,9 +39,9 @@ export default function DateSelector () {
         <h2>Select a Date</h2>
               <div className="date-selection">
                   <div className="date-container">
-                    {/* <Link to="/">
-                      <button onClick={handleTodayClick}>Today</button>
-                    </Link> */}
+                    <Link to="/">
+                      <button className="today-button" onClick={handleTodayClick}>Today</button>
+                    </Link>
                       <select  id="month" name="month" onChange={handleMonthChange} >
                           <option>month</option>
                           <option value="01">January</option>
