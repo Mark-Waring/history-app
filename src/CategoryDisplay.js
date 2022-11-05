@@ -4,7 +4,7 @@ import { useContext } from "react"
 import { AppContext } from "./AppContext"
 
 export default function CategoryDisplay () {
-    const params = useParams()
+    const { category } = useParams()
     const { displayedDate } = useContext(AppContext)
     return (
         <>
@@ -35,7 +35,7 @@ export default function CategoryDisplay () {
                 </Link>
                 </span>
                 </div>
-                {!params.category && <h2>Select a Category to View Events for {displayedDate}</h2>}
+                {!category && <h2>Select a Category to View Events for {displayedDate}</h2>}
             </>
         
     )
