@@ -29,16 +29,17 @@ export default function DateSelector () {
   "December",
   ];
   
-  const todayDate = new Date()
-  let todayMonth = todayDate.getMonth() + 1
-  let todayDay = todayDate.getDay() - 1
+  // const todayDate = new Date()
+  // const todayMonth = todayDate.getMonth() + 1
+  // const todayDay = todayDate.getDay() - 1
+  // const todayString = `${todayMonth}/${todayDay}`
 
   function handleMonthChange (e) {
       setMonth(e.target.value)
   }
 
   useEffect(() => {
-    if ((month === "02" & parseInt(day) >= 30) || (monthHas30Days && day === "31")) {
+    if ((month === "02" & parseInt(day) >= 30) || (monthHas30Days && parseInt(day) > 30)) {
       setDay("")
     }
   }, [month, day, monthHas30Days])
@@ -52,24 +53,22 @@ export default function DateSelector () {
     setChosenDate(`${month}/${day}`)
   }
 
-  function handleTodayClick () {
-    setChosenDate(`${todayMonth}/${todayDay}`)
-  }
+  // function handleTodayClick () {
+  //   setChosenDate(todayString)
+  // }
 
   useEffect (() => {
     setDisplayedDate(`${monthNames[(monthNumber) - 1]} ${dayNumber}`)
   })
-
-
   
   return (
     <>
       <h2>Select a Date</h2>
       <div className="date-selection">
         <div className="date-container">
-          <Link to="/">
-            <button className="date-button" onClick={handleTodayClick}>Today</button>
-          </Link>
+          {/* <Link to="/">
+            <button className="date-button" disabled={chosenDate === todayString} onClick={handleTodayClick}>Today</button>
+          </Link> */}
           <select  id="month" name="month" onChange={handleMonthChange} >
             <option>month</option>
             <option value="01">January</option>
