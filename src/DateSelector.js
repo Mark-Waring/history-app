@@ -39,14 +39,13 @@ export default function DateSelector () {
   }
 
   useEffect(() => {
-    if ((month === "02" & parseInt(day) >= 30) || (monthHas30Days && parseInt(day) > 30)) {
+    if ((month === "02" & parseInt(day) > 29) || (monthHas30Days && parseInt(day) > 30)) {
       setDay("")
     }
   }, [month, day, monthHas30Days])
 
   function handleDayChange (e) {
       setDay(e.target.value)
-      
   }
 
   function handleDateSelection () {
@@ -70,7 +69,7 @@ export default function DateSelector () {
             <button className="date-button" disabled={chosenDate === todayString} onClick={handleTodayClick}>Today</button>
           </Link> */}
           <select  id="month" name="month" onChange={handleMonthChange} >
-            <option>month</option>
+            <option value="">month</option>
             <option value="01">January</option>
             <option value="02">February</option>
             <option value="03">March</option>
@@ -85,7 +84,7 @@ export default function DateSelector () {
             <option value="12">December</option>
           </select>
           <select  id="day" name="day" onChange={handleDayChange}>
-            <option>day</option>
+            <option value="">day</option>
             <option value="01">01</option>
             <option value="02">02</option>
             <option value="03">03</option>
@@ -116,11 +115,11 @@ export default function DateSelector () {
             <option value="28">28</option>
             <option value="29">29</option>
             {month !== "02" && <option value="30">30</option>}
-            {month !== "02" && month !== "04" && month !== "06" && month !== "09" && month !== "11" && <option value="31">31</option>}
+            {!monthHas30Days && <option value="31">31</option>}
           </select>                      
         </div>
           <Link to="/">
-            <button  className="date-button" disabled={month.length !== 2 || day.length !== 2} onClick={handleDateSelection}>Go</button>
+            <button  className="date-button" disabled={ !month || !day } onClick={handleDateSelection}>Go</button>
           </Link>                
       </div>
     </>
