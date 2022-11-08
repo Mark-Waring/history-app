@@ -6,6 +6,7 @@ import { AppContext } from "./AppContext"
 export default function CategoryDisplay () {
     const { category } = useParams()
     const { displayedDate } = useContext(AppContext)
+    
     return (
         <>
         <div className="category-container">
