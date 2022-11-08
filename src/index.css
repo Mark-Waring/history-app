@@ -70,6 +70,10 @@ h1, h2 {
   justify-content: space-around;
 }
 
+.event-caption {
+  justify-content:first baseline;
+}
+
 .event-caption,
 .event {
   flex-flow: column wrap;

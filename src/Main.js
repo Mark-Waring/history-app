@@ -7,7 +7,7 @@ import { Outlet } from "react-router-dom";
 
 
 export default function Main() {
-    const { isLoggedIn, chosenDate } = useContext(AppContext)
+    const { isLoggedIn, selectedDate } = useContext(AppContext)
     
     if (!isLoggedIn) {
         return (
@@ -17,7 +17,7 @@ export default function Main() {
     return (
         <>
             <DateSelector />
-            {chosenDate && <CategoryDisplay />}
+            {selectedDate && <CategoryDisplay />}
             <Outlet />
         </>
     )

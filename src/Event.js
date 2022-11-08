@@ -1,10 +1,8 @@
 import { AppContext } from "./AppContext"
 import { useContext } from "react"
-import { useParams } from "react-router-dom"
 
 export default function Event ({thumbnail, description, page, year}) {
-  const { category } = useParams()
-  const { onBookmarkAdd, onBookmarkRemove} = useContext(AppContext)
+  const { onBookmarkAdd, onBookmarkRemove, bookmarks } = useContext(AppContext)
   return (
     ( <div className="event">
       <br/>
@@ -17,8 +15,9 @@ export default function Event ({thumbnail, description, page, year}) {
             <a href={page} target="blank">Learn More</a>
         </div>
         <br />
-        {category && <button onClick={() => onBookmarkAdd({thumbnail, description, page, year})}>Bookmark</button>}
-        {!category && <button onClick={() => onBookmarkRemove({thumbnail, description, page, year})}>Remove Bookmark</button>}
+        {!bookmarks.some(bookmark => description === bookmark.description) ?
+         <button onClick={() => onBookmarkAdd({thumbnail, description, page, year})}>Bookmark</button> :
+         <button onClick={() => onBookmarkRemove({thumbnail, description, page, year})}>Remove Bookmark</button>}
       </div>
    )
   )

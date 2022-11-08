@@ -4,7 +4,7 @@ export const AppContext = createContext();
 
 export function AppProvider(props) {
     
-    const [chosenDate, setChosenDate] = useState("")
+    const [selectedDate, setSelectedDate] = useState("")
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [isBookmarked, setIsBookmarked] = useState(false);
     const [bookmarks, setBookmarks] = useState([]);
@@ -29,8 +29,8 @@ export function AppProvider(props) {
     const value = {
         isLoggedIn,
         setIsLoggedIn,
-        chosenDate,
-        setChosenDate,
+        selectedDate,
+        setSelectedDate,
         isBookmarked,
         setIsBookmarked,
         bookmarks,

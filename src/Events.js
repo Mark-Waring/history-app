@@ -5,13 +5,13 @@ import { useQuery } from "react-query";
 import Event from "./Event";
 
 export default function Events() {
-  const { chosenDate, displayedDate } = useContext(AppContext);
+  const { selectedDate, displayedDate } = useContext(AppContext);
   const category = useParams().category;
   
 
-  const { isLoading, error, data } = useQuery(["eventData", chosenDate], () =>
+  const { isLoading, error, data } = useQuery(["eventData", selectedDate], () =>
     fetch(
-      `https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/all/${chosenDate}`
+      `https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/all/${selectedDate}`
     ).then((res) => {
       if (res.ok) {
         return res.json();
@@ -27,12 +27,20 @@ export default function Events() {
   if (error) {
     return <div>Something went wrong</div>;
   }
+
+  const displayedCategories = {
+    events: "Historical Events",
+    births: "Birthdays",
+    deaths: "Deaths",
+    holidays: "Holidays",
+    selected: "Other Events"
+}
   
   return (
     <>
       {
         <h2>
-          Here's What Happened On {displayedDate}
+          {displayedCategories[category]} on {displayedDate}
         </h2>
       }
       <div className="events-container">

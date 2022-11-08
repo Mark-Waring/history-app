@@ -3,11 +3,11 @@ import { useContext, useEffect, useState } from "react"
 import { AppContext } from "./AppContext"
 
 export default function DateSelector () {
-  const { setChosenDate, chosenDate, setDisplayedDate } = useContext(AppContext)
+  const { setSelectedDate, selectedDate, setDisplayedDate } = useContext(AppContext)
   const [month, setMonth] = useState("");
   const [day, setDay] = useState("");
-  const monthNumber = parseInt(chosenDate.slice(0, 2));
-  const dayNumber = parseInt(chosenDate.slice(3))
+  const monthNumber = parseInt(selectedDate.slice(0, 2), 10);
+  const dayNumber = parseInt(selectedDate.slice(3), 10)
   let monthHas30Days = false;
 
   if (month === "04" || month === "06" || month === "09" || month === "11") {
@@ -29,10 +29,8 @@ export default function DateSelector () {
   "December",
   ];
   
-  // const todayDate = new Date()
-  // const todayMonth = todayDate.getMonth() + 1
-  // const todayDay = todayDate.getDay() - 1
-  // const todayString = `${todayMonth}/${todayDay}`
+  const today = new Date()
+  const todaySelection = `${today.getMonth() + 1}/${today.getDate()}`
 
   function handleMonthChange (e) {
       setMonth(e.target.value)
@@ -42,32 +40,34 @@ export default function DateSelector () {
     if ((month === "02" & parseInt(day) > 29) || (monthHas30Days && parseInt(day) > 30)) {
       setDay("")
     }
-  }, [month, day, monthHas30Days])
+  // eslint-disable-next-line
+  }, [month])
 
   function handleDayChange (e) {
       setDay(e.target.value)
   }
 
-  function handleDateSelection () {
-    setChosenDate(`${month}/${day}`)
+  function handleTodayClick () {
+    setSelectedDate(todaySelection)
   }
 
-  // function handleTodayClick () {
-  //   setChosenDate(todayString)
-  // }
+  function handleGoClick () {
+    setSelectedDate(`${month}/${day}`)
+  }
 
   useEffect (() => {
-    setDisplayedDate(`${monthNames[(monthNumber) - 1]} ${dayNumber}`)
-  })
+    setDisplayedDate(`${monthNames[(monthNumber)-1]} ${dayNumber}`)
+  // eslint-disable-next-line
+  }, [selectedDate])
   
   return (
     <>
       <h2>Select a Date</h2>
       <div className="date-selection">
         <div className="date-container">
-          {/* <Link to="/">
-            <button className="date-button" disabled={chosenDate === todayString} onClick={handleTodayClick}>Today</button>
-          </Link> */}
+          <Link to="/">
+            <button className="date-button" disabled={selectedDate === todaySelection} onClick={handleTodayClick}>Today</button>
+          </Link>
           <select  id="month" name="month" onChange={handleMonthChange} >
             <option value="">month</option>
             <option value="01">January</option>
@@ -119,7 +119,7 @@ export default function DateSelector () {
           </select>                      
         </div>
           <Link to="/">
-            <button  className="date-button" disabled={ !month || !day } onClick={handleDateSelection}>Go</button>
+            <button  className="date-button" disabled={ !month || !day } onClick={handleGoClick}>Go</button>
           </Link>                
       </div>
     </>

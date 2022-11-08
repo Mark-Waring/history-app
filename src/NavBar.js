@@ -5,12 +5,12 @@ import { useEffect } from "react"
 import LightModeIcon from "./LightModeIcon"
 
 export default function NavBar () {
-    const { isDarkTheme, isLoggedIn, setIsLoggedIn, setBookmarks, bookmarks, setChosenDate  } = useContext(AppContext);
+    const { isDarkTheme, isLoggedIn, setIsLoggedIn, setBookmarks, bookmarks, setSelectedDate  } = useContext(AppContext);
 
     function handleLogoutClick() {
         setIsLoggedIn(false)
         setBookmarks([])
-        setChosenDate("");
+        setSelectedDate("");
     }
 
     useEffect(() => {
@@ -31,7 +31,7 @@ export default function NavBar () {
             </Link>
               {!isDarkTheme && <LightModeIcon src="https://static.thenounproject.com/png/2853779-200.png" />}
               {isDarkTheme && <LightModeIcon src="https://cdn3.iconfinder.com/data/icons/ink-basic/35/dark-mode-512.png" />}
-            <Link to="/" onClick={() => setChosenDate("")}>
+            <Link to="/" onClick={() => setSelectedDate("")}>
               <div>Home</div>
             </Link>          
         </nav>
