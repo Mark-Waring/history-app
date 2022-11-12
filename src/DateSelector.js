@@ -34,6 +34,9 @@ export default function DateSelector() {
    // eslint-disable-next-line
   }, [month]);
 
+  console.log(month)
+  console.log(maxDay)
+
 
   useEffect(() => {
     if (day > maxDay) {
@@ -48,7 +51,7 @@ export default function DateSelector() {
     if (todayMonth < 10) {
     todayMonth = "0" + todayMonth;
   }
-    setMonth(todayMonth);
+    setMonth(todayMonth.toString());
     setDay(todayDay);
     setSelectedDate(`${todayMonth}/${todayDay}`);
   }
