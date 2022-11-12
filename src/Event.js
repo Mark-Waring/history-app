@@ -2,7 +2,7 @@ import { AppContext } from "./AppContext"
 import { useContext } from "react"
 
 export default function Event ({thumbnail, description, page, year}) {
-  const { onBookmarkAdd, onBookmarkRemove, bookmarks, isDarkTheme } = useContext(AppContext)
+  const { onBookmarkAdd, onBookmarkRemove, bookmarks } = useContext(AppContext)
   return (
     ( <div className="event">
         <a href={page} target="blank" className="image-link">
