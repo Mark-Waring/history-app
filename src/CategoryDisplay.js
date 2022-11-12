@@ -4,19 +4,19 @@ export default function CategoryDisplay () {
     
     return (
         <div className="category-container">
-            <NavLink activeClassName="active" className="category" to="events">
+            <NavLink className="category" to="events">
                 Historical Events
             </NavLink>
-            <NavLink activeClassName="active" className="category" to="births">
+            <NavLink className="category" to="births">
                 Birthdays
             </NavLink>
-            <NavLink activeClassName="active" className="category" to="deaths">
+            <NavLink className="category" to="deaths">
                 Deaths
             </NavLink>
-            <NavLink activeClassName="active" className="category" to="holidays">
+            <NavLink className="category" to="holidays">
                 Holidays
             </NavLink>
-            <NavLink activeClassName="active" className="category" to="selected">
+            <NavLink className="category" to="selected">
                 Other Events
             </NavLink>
         </div>

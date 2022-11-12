@@ -9,9 +9,10 @@ body, .event-year {
   margin: 0px;
 }
 
-body.dark {
+.dark {
     color: white;
     background-color: black;
+    min-height: 100vh;
   }
 
 
