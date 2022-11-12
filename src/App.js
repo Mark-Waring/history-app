@@ -10,19 +10,20 @@ import { AppContext } from "./AppContext";
 
 function App() {
   const {isDarkTheme} = useContext(AppContext)
+  
   return ( 
-      <div className={!isDarkTheme ? "" : "dark"}>
-        <Router>
-          <NavBar />
-          <h1>This Day Is History</h1>
-          <Routes>
-            <Route path="/" element={<Main />}>            
-                <Route path=":category" element={<Events />} />            
-            </Route>
-            <Route exact path="bookmarks" element={<Bookmarks />}/>
-          </Routes>
-        </Router>
-      </div>
+    <div className={!isDarkTheme ? "" : "dark"}>
+      <Router>
+        <NavBar />
+        <h1>This Day Is History</h1>
+        <Routes>
+          <Route path="/" element={<Main />}>            
+              <Route path=":category" element={<Events />} />            
+          </Route>
+          <Route exact path="bookmarks" element={<Bookmarks />}/>
+        </Routes>
+      </Router>
+    </div>
   )
 }
 
