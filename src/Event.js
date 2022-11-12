@@ -9,7 +9,7 @@ export default function Event ({thumbnail, description, page, year}) {
           <img className ="event-image"
             src={thumbnail}
             alt={description}
-            style={isDarkTheme ? {background: "white"} : {}}
+            style={{background: "white"}}
             />
         </a>
         <div className="event-caption">
