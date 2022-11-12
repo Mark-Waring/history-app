@@ -30,9 +30,14 @@ h1, h2 {
   background-color: #202020;
 }
 
+a:visited {
+  color:blue;
+}
+
 .dark a {
   color: white;
 }
+
 
 .date-button,
 .nav-items {
@@ -43,8 +48,8 @@ h1, h2 {
   float: right;
 }
 
-.nav-link {
-  text-decoration: underline;
+.nav-home {
+  text-decoration: none;
 }
 
 .light-dark-icon{
@@ -79,6 +84,16 @@ h1, h2 {
 .category,
 .event {
   text-align: center;
+}
+
+.category {
+  font-weight: bold;
+}
+
+.active{
+  pointer-events: none;
+  text-decoration: none;
+  font-weight: normal;
 }
 
 .events-container {

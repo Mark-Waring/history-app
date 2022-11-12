@@ -1,38 +1,25 @@
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 export default function CategoryDisplay () {
     
     return (
-        <>
         <div className="category-container">
-            <span className="category">
-                <Link to="events">
-                    Historical Events
-                </Link>
-            </span>
-            <span className="category">
-                <Link to="births">
-                    Birthdays
-                </Link>
-                </span>
-            <span className="category">
-                <Link to="deaths">
-                    Deaths
-                </Link>
-                </span>
-            <span className="category">
-                <Link to="holidays">
-                    Holidays
-                </Link>
-                </span>
-            <span className="category">
-                <Link to="selected">
-                    Other Events
-                </Link>
-                </span>
-                </div>
-            </>
-        
+            <NavLink activeClassName="active" className="category" to="events">
+                Historical Events
+            </NavLink>
+            <NavLink activeClassName="active" className="category" to="births">
+                Birthdays
+            </NavLink>
+            <NavLink activeClassName="active" className="category" to="deaths">
+                Deaths
+            </NavLink>
+            <NavLink activeClassName="active" className="category" to="holidays">
+                Holidays
+            </NavLink>
+            <NavLink activeClassName="active" className="category" to="selected">
+                Other Events
+            </NavLink>
+        </div>
     )
 }
 

@@ -1,9 +1,9 @@
 import { useContext } from "react"
 import { AppContext } from "./AppContext"
+import lightIcon from "./icons/moon-6686.png"
+import darkIcon from "./icons/sun-xxl.png"
 
 
-const lightIcon = "https://cdn3.iconfinder.com/data/icons/ink-basic/35/dark-mode-512.png"
-const darkIcon = "https://static.thenounproject.com/png/2853779-200.png"
 
 export default function LightModeIcon() {
     const { setIsDarkTheme, isDarkTheme } = useContext(AppContext)

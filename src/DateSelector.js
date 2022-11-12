@@ -63,7 +63,6 @@ export default function DateSelector() {
           <Link to="/events">
             <button
               className="date-button"
-              disabled={selectedDate === `${todayMonth}/${todayDay}`}
               onClick={handleTodayClick}
             >
               Today
