@@ -1,4 +1,4 @@
-import { Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useContext } from "react"
 import { AppContext } from "./AppContext"
 import { useEffect } from "react"
@@ -22,18 +22,16 @@ export default function NavBar () {
       }, [isDarkTheme]);
 
     return (
-      <nav className="nav-bar">
-        <Link to="/" className="nav-home" onClick={() => setSelectedDate("")}>
-          Home
-        </Link>  
-        <Link to="/" >
-          {isLoggedIn && <div onClick={handleLogoutClick} className="nav-items">Log out</div>}
-        </Link>
-        <Link to="/bookmarks">
-          {bookmarks.length > 0 && <div className="nav-items">Bookmarks ({bookmarks.length})</div>}
-          {bookmarks.length === 0 && <div className="nav-items">Bookmarks</div>}
-        </Link>
-        {<LightModeIcon/>} 
+        <nav className="nav-bar">
+            {isLoggedIn && <Link to="/" className="nav-items nav-home" onClick={handleLogoutClick}>
+              Log out
+            </Link>}
+            {bookmarks.length > 0 && <Link to="/bookmarks" className="nav-items">Bookmarks ({bookmarks.length})</Link>}
+            {bookmarks.length === 0 && <Link to="/bookmarks" className="nav-items">Bookmarks</Link>}
+            {<LightModeIcon/>}
+            <Link to="/" onClick={() => setSelectedDate("")}>
+              Home
+            </Link>          
         </nav>
-    )
+        )
 }

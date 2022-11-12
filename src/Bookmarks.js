@@ -11,6 +11,9 @@ export default function Bookmarks () {
         {isLoggedIn && bookmarks.length === 0 && 
             <h2>You have no bookmarked events right now</h2>
         }
+        {isLoggedIn && bookmarks.length > 0 && 
+            <h2>Bookmarked Events</h2>
+        }
         {isLoggedIn &&
         <div className="events-container">
                 {bookmarks.map((event, idx) => {
