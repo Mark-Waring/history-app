@@ -34,10 +34,6 @@ export default function DateSelector() {
    // eslint-disable-next-line
   }, [month]);
 
-  console.log(month)
-  console.log(maxDay)
-
-
   useEffect(() => {
     if (day > maxDay) {
       setDay(maxDay);
