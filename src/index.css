@@ -110,6 +110,7 @@ a:visited {
 
 .event-caption {
   justify-content:first baseline;
+  margin-bottom: 5px;
 }
 
 .event-caption,
