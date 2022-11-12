@@ -7,10 +7,16 @@ export default function DateSelector() {
     useContext(AppContext);
   const [month, setMonth] = useState("01");
   const [day, setDay] = useState("01");
-  const monthNumber = parseInt(month);
   const dayNumber = parseInt(day);
 
-  const monthNames = [
+  const today = new Date();
+  let todayMonth = today.getMonth() + 1;
+  if (todayMonth < 10) {
+    todayMonth = "0" + todayMonth;
+  }
+  const todayDay = today.getDate();
+
+  const months = [
     { val: "01", display: "January", maxDay: 31 },
     { val: "02", display: "February", maxDay: 29 },
     { val: "03", display: "March", maxDay: 31 },
@@ -26,32 +32,26 @@ export default function DateSelector() {
   ];
 
   const maxDay = useMemo(() => {
-    let monthKeys = monthNames.find((v) => v.val === month);
+    let monthKeys = months.find((v) => v.val === month);
     return monthKeys?.maxDay;
+   // eslint-disable-next-line
   }, [month]);
-
-  const today = new Date();
-  const todaySelection = `${today.getMonth() + 1}/${today.getDate()}`;
 
 
   useEffect(() => {
     if (day > maxDay) {
       setDay(maxDay);
-    }
+    } // eslint-disable-next-line
   }, [maxDay]);
 
   function handleTodayClick() {
-    let monthNum = today.getMonth() + 1;
-    if (monthNum < 10) {
-      monthNum = "0" + monthNum;
-    }
-    setMonth(monthNum);
-    setDay(today.getDate());
-    setSelectedDate(todaySelection);
+    setMonth(todayMonth);
+    setDay(todayDay);
+    setSelectedDate(`${todayMonth}/${todayDay}`);
   }
 
   useEffect(() => {
-    setDisplayedDate(`${monthNames[monthNumber - 1].display} ${dayNumber}`);
+    setDisplayedDate(`${months[month - 1].display} ${dayNumber}`);
     // eslint-disable-next-line
   }, [selectedDate]);
 
@@ -63,7 +63,7 @@ export default function DateSelector() {
           <Link to="/events">
             <button
               className="date-button"
-              disabled={selectedDate === todaySelection}
+              disabled={selectedDate === `${todayMonth}/${todayDay}`}
               onClick={handleTodayClick}
             >
               Today
@@ -75,7 +75,7 @@ export default function DateSelector() {
             value={month}
             onChange={(e) => setMonth(e.target.value)}
           >
-            {monthNames.map((val) => (
+            {months.map((val) => (
               <option key={val.val} value={val.val}>
                 {val.display}
               </option>
