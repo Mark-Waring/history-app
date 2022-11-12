@@ -8,14 +8,7 @@ export default function DateSelector() {
   const [month, setMonth] = useState("01");
   const [day, setDay] = useState("01");
   const dayNumber = parseInt(day);
-
-  const today = new Date();
-  let todayMonth = today.getMonth() + 1;
-  if (todayMonth < 10) {
-    todayMonth = "0" + todayMonth;
-  }
-  const todayDay = today.getDate();
-
+  
   const months = [
     { val: "01", display: "January", maxDay: 31 },
     { val: "02", display: "February", maxDay: 29 },
@@ -49,6 +42,12 @@ export default function DateSelector() {
   }, [maxDay]);
 
   function handleTodayClick() {
+    const today = new Date();
+    const todayDay = today.getDate();
+    let todayMonth = today.getMonth() + 1;
+    if (todayMonth < 10) {
+    todayMonth = "0" + todayMonth;
+  }
     setMonth(todayMonth);
     setDay(todayDay);
     setSelectedDate(`${todayMonth}/${todayDay}`);
