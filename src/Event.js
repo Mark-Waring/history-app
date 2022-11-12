@@ -10,7 +10,7 @@ export default function Event ({thumbnail, description, page, year}) {
         </a>
         <div className="event-caption">
             <h3 className="event-year">{year}</h3>
-            <p>{description}</p>
+            <p className="event-description">{description}</p>
             <a href={page} target="blank">Learn More</a>
         </div>
         <br />
