@@ -5,7 +5,6 @@ export default function Event ({thumbnail, description, page, year}) {
   const { onBookmarkAdd, onBookmarkRemove, bookmarks } = useContext(AppContext)
   return (
     ( <div className="event">
-      <br/>
         <a href={page} target="blank" className="image-link">
           <img className ="event-image" src={thumbnail} alt={description}/>
         </a>
