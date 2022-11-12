@@ -1,90 +1,92 @@
-import { Link } from "react-router-dom"
-import { useContext, useEffect, useState } from "react"
-import { AppContext } from "./AppContext"
+import { Link } from "react-router-dom";
+import { useContext, useEffect, useMemo, useState } from "react";
+import { AppContext } from "./AppContext";
 
-export default function DateSelector () {
-  const { setSelectedDate, selectedDate, setDisplayedDate } = useContext(AppContext)
-  const [month, setMonth] = useState("");
-  const [day, setDay] = useState("");
-  const monthNumber = parseInt(selectedDate.slice(0, 2), 10);
-  const dayNumber = parseInt(selectedDate.slice(3), 10)
-  let monthHas30Days = false;
+export default function DateSelector() {
+  const { setSelectedDate, selectedDate, setDisplayedDate } =
+    useContext(AppContext);
+  const [month, setMonth] = useState("01");
+  const [day, setDay] = useState("01");
+  const monthNumber = parseInt(month);
+  const dayNumber = parseInt(day);
 
-  if (month === "04" || month === "06" || month === "09" || month === "11") {
-    monthHas30Days = true
-  } else monthHas30Days = false;
-  
   const monthNames = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+    { val: "01", display: "January", maxDay: 31 },
+    { val: "02", display: "February", maxDay: 29 },
+    { val: "03", display: "March", maxDay: 31 },
+    { val: "04", display: "April", maxDay: 30 },
+    { val: "05", display: "May", maxDay: 31 },
+    { val: "06", display: "June", maxDay: 30 },
+    { val: "07", display: "July", maxDay: 31 },
+    { val: "08", display: "August", maxDay: 31 },
+    { val: "09", display: "September", maxDay: 30 },
+    { val: "10", display: "October", maxDay: 31 },
+    { val: "11", display: "November", maxDay: 30 },
+    { val: "12", display: "December", maxDay: 31 },
   ];
-  
-  const today = new Date()
-  const todaySelection = `${today.getMonth() + 1}/${today.getDate()}`
 
-  function handleMonthChange (e) {
-      setMonth(e.target.value)
+  const maxDay = useMemo(() => {
+    let monthKeys = monthNames.find((v) => v.val === month);
+    return monthKeys?.maxDay;
+  }, [month]);
+
+  const today = new Date();
+  const todaySelection = `${today.getMonth() + 1}/${today.getDate()}`;
+
+
+  useEffect(() => {
+    if (day > maxDay) {
+      setDay(maxDay);
+    }
+  }, [maxDay]);
+
+  function handleTodayClick() {
+    let monthNum = today.getMonth() + 1;
+    if (monthNum < 10) {
+      monthNum = "0" + monthNum;
+    }
+    setMonth(monthNum);
+    setDay(today.getDate());
+    setSelectedDate(todaySelection);
   }
 
   useEffect(() => {
-    if ((month === "02" & parseInt(day) > 29) || (monthHas30Days && parseInt(day) > 30)) {
-      setDay("")
-    }
-  // eslint-disable-next-line
-  }, [month])
+    setDisplayedDate(`${monthNames[monthNumber - 1].display} ${dayNumber}`);
+    // eslint-disable-next-line
+  }, [selectedDate]);
 
-  function handleDayChange (e) {
-      setDay(e.target.value)
-  }
-
-  function handleTodayClick () {
-    setSelectedDate(todaySelection)
-  }
-
-  function handleGoClick () {
-    setSelectedDate(`${month}/${day}`)
-  }
-
-  useEffect (() => {
-    setDisplayedDate(`${monthNames[(monthNumber)-1]} ${dayNumber}`)
-  // eslint-disable-next-line
-  }, [selectedDate])
-  
   return (
     <>
       <h2>Select a Date</h2>
       <div className="date-selection">
         <div className="date-container">
-          <Link to="/">
-            <button className="date-button" disabled={selectedDate === todaySelection} onClick={handleTodayClick}>Today</button>
+          <Link to="/events">
+            <button
+              className="date-button"
+              disabled={selectedDate === todaySelection}
+              onClick={handleTodayClick}
+            >
+              Today
+            </button>
           </Link>
-          <select  id="month" name="month" onChange={handleMonthChange} >
-            <option value="">month</option>
-            <option value="01">January</option>
-            <option value="02">February</option>
-            <option value="03">March</option>
-            <option value="04">April</option>
-            <option value="05">May</option>
-            <option value="06">June</option>
-            <option value="07">July</option>
-            <option value="08">August</option>
-            <option value="09">September</option>
-            <option value="10">October</option>
-            <option value="11">November</option>
-            <option value="12">December</option>
+          <select
+            id="month"
+            name="month"
+            value={month}
+            onChange={(e) => setMonth(e.target.value)}
+          >
+            {monthNames.map((val) => (
+              <option key={val.val} value={val.val}>
+                {val.display}
+              </option>
+            ))}
           </select>
-          <select  id="day" name="day" onChange={handleDayChange}>
-            <option value="">day</option>
+          <select
+            id="day"
+            value={day}
+            name="day"
+            onChange={(e) => setDay(e.target.value)}
+          >
             <option value="01">01</option>
             <option value="02">02</option>
             <option value="03">03</option>
@@ -114,14 +116,19 @@ export default function DateSelector () {
             <option value="27">27</option>
             <option value="28">28</option>
             <option value="29">29</option>
-            {month !== "02" && <option value="30">30</option>}
-            {month !== "02" && !monthHas30Days && <option value="31">31</option>}
-          </select>                      
+            {maxDay >= 30 && <option value="30">30</option>}
+            {maxDay === 31 && <option value="31">31</option>}
+          </select>
         </div>
-          <Link to="/">
-            <button  className="date-button" disabled={ !month || !day } onClick={handleGoClick}>Go</button>
-          </Link>                
+        <Link to="/events">
+          <button
+            className="date-button"
+            onClick={() => setSelectedDate(`${month}/${day}`)}
+          >
+            Go
+          </button>
+        </Link>
       </div>
     </>
-    )
-  }
+  );
+}

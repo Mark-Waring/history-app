@@ -29,8 +29,7 @@ export default function NavBar () {
               {bookmarks.length > 0 && <div className="nav-items">Bookmarks ({bookmarks.length})</div>}
               {bookmarks.length === 0 && <div className="nav-items">Bookmarks</div>}
             </Link>
-              {!isDarkTheme && <LightModeIcon src="https://static.thenounproject.com/png/2853779-200.png" />}
-              {isDarkTheme && <LightModeIcon src="https://cdn3.iconfinder.com/data/icons/ink-basic/35/dark-mode-512.png" />}
+              {<LightModeIcon/>}
             <Link to="/" onClick={() => setSelectedDate("")}>
               <div>Home</div>
             </Link>          
