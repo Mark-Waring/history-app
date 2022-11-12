@@ -2,11 +2,15 @@ import { AppContext } from "./AppContext"
 import { useContext } from "react"
 
 export default function Event ({thumbnail, description, page, year}) {
-  const { onBookmarkAdd, onBookmarkRemove, bookmarks } = useContext(AppContext)
+  const { onBookmarkAdd, onBookmarkRemove, bookmarks, isDarkTheme } = useContext(AppContext)
   return (
     ( <div className="event">
         <a href={page} target="blank" className="image-link">
-          <img className ="event-image" src={thumbnail} alt={description}/>
+          <img className ="event-image"
+            src={thumbnail}
+            alt={description}
+            style={isDarkTheme ? {background: "white"} : {}}
+            />
         </a>
         <div className="event-caption">
             <h3 className="event-year">{year}</h3>
