@@ -89,10 +89,11 @@ a:visited {
 }
 
 .category {
-  font-weight: bold;
+  height:25px;
 }
 
 .active{
+  opacity: 75%;
   pointer-events: none;
   text-decoration: none;
   font-weight: normal;
@@ -104,7 +105,7 @@ a:visited {
 }
 
 .sort-label {
-  margin-left: 10px;
+  margin-left: 15px;
 }
 
 .event-caption {
