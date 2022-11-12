@@ -23,13 +23,13 @@ export default function NavBar () {
 
     return (
         <nav className="nav-bar">
-            {isLoggedIn && <Link to="/" className="nav-items nav-home" onClick={handleLogoutClick}>
+            {isLoggedIn && <Link to="/" className="nav-items" onClick={handleLogoutClick}>
               Log out
             </Link>}
             {bookmarks.length > 0 && <Link to="/bookmarks" className="nav-items">Bookmarks ({bookmarks.length})</Link>}
             {bookmarks.length === 0 && <Link to="/bookmarks" className="nav-items">Bookmarks</Link>}
             {<LightModeIcon/>}
-            <Link to="/" onClick={() => setSelectedDate("")}>
+            <Link to="/"className="nav-home" onClick={() => setSelectedDate("")}>
               Home
             </Link>          
         </nav>

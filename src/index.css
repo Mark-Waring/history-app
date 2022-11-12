@@ -49,6 +49,10 @@ a:visited {
   text-decoration: none;
 }
 
+.nav-home {
+  text-decoration: none;
+}
+
 .light-dark-icon{
   height: 20px;
   width: 20px;
