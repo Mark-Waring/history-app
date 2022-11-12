@@ -3,9 +3,10 @@ import { useContext } from "react"
 import { AppContext } from "./AppContext"
 import { useEffect } from "react"
 import LightModeIcon from "./LightModeIcon"
+import BookmarkLink from "./BookmarkLink"
 
 export default function NavBar () {
-    const { isDarkTheme, isLoggedIn, setIsLoggedIn, setBookmarks, bookmarks, setSelectedDate  } = useContext(AppContext);
+    const { isDarkTheme, isLoggedIn, setIsLoggedIn, setBookmarks, setSelectedDate  } = useContext(AppContext);
 
     function handleLogoutClick() {
         setIsLoggedIn(false)
@@ -26,8 +27,7 @@ export default function NavBar () {
             {isLoggedIn && <Link to="/" className="nav-items" onClick={handleLogoutClick}>
               Log out
             </Link>}
-            {bookmarks.length > 0 && <Link to="/bookmarks" className="nav-items">Bookmarks ({bookmarks.length})</Link>}
-            {bookmarks.length === 0 && <Link to="/bookmarks" className="nav-items">Bookmarks</Link>}
+            <BookmarkLink />
             {<LightModeIcon/>}
             <Link to="/"className="nav-home" onClick={() => setSelectedDate("")}>
               Home
