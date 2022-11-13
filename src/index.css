@@ -181,7 +181,11 @@ a:visited {
     min-width: fit-content;
   }
   .category {
-    min-width: 100%;
+    min-width: 75%;
+    border: 1px solid white;
+  }
+  .category-container {
+    justify-content: center;
   }
 }
 
