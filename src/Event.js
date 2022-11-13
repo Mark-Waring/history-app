@@ -14,9 +14,9 @@ export default function Event ({thumbnail, description, page, year}) {
             />
         </a>
         <div className="event-caption">
-          <h3 className="event-year">
-            {year > 0 ? year : `${year.toString().slice(1)} B.C.`}
-          </h3>
+          {year && <h3 className="event-year">
+            {year > 0 ? year : `${year * -1} B.C.`}
+          </h3>}
           <p 
             className="event-description"
             style={{marginTop: year ? "10px" : "0px"}}
