@@ -116,11 +116,6 @@ a:visited {
 }
 
 .event-caption,
-.event.image {
-  margin-bottom: 5px;
-}
-
-.event-caption,
 .event-border {
   flex-flow: column wrap;
 }
@@ -142,6 +137,11 @@ a:visited {
   background: white;
   max-width: 65%;
   border: 1px solid black;
+}
+
+.event-caption,
+.event-image {
+  margin-bottom: 5px;
 }
 
 .event-border {
