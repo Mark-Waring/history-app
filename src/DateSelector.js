@@ -8,7 +8,7 @@ export default function DateSelector() {
   const [month, setMonth] = useState("01");
   const [day, setDay] = useState("01");
   const dayNumber = parseInt(day);
-  
+
   const months = [
     { val: "01", display: "January", maxDay: 31 },
     { val: "02", display: "February", maxDay: 29 },
@@ -31,7 +31,7 @@ export default function DateSelector() {
   const maxDay = useMemo(() => {
     let monthKeys = months.find((v) => v.val === month);
     return monthKeys?.maxDay;
-   // eslint-disable-next-line
+    // eslint-disable-next-line
   }, [month]);
 
   useEffect(() => {
@@ -45,8 +45,8 @@ export default function DateSelector() {
     const todayDay = today.getDate();
     let todayMonth = today.getMonth() + 1;
     if (todayMonth < 10) {
-    todayMonth = "0" + todayMonth;
-  }
+      todayMonth = "0" + todayMonth;
+    }
     setMonth(todayMonth.toString());
     setDay(todayDay);
     setSelectedDate(`${todayMonth}/${todayDay}`);
@@ -63,10 +63,7 @@ export default function DateSelector() {
       <div className="date-selection">
         <div className="date-container">
           <Link to="/events">
-            <button
-              className="date-button"
-              onClick={handleTodayClick}
-            >
+            <button className="date-button" onClick={handleTodayClick}>
               Today
             </button>
           </Link>
@@ -88,15 +85,15 @@ export default function DateSelector() {
             name="day"
             onChange={(e) => setDay(e.target.value)}
           >
-            {
-              dayLoop(() => {
-                const dayOptions = [];
-                for (let i = 1; i < 30; i++) {
-                  dayOptions.push(<option key={i}>{i < 10 ? "0" + i : i}</option>);
-                }
-                return dayOptions;
-              })
-            }
+            {dayLoop(() => {
+              const dayOptions = [];
+              for (let i = 1; i < 30; i++) {
+                dayOptions.push(
+                  <option key={i}>{i < 10 ? "0" + i : i}</option>
+                );
+              }
+              return dayOptions;
+            })}
             {maxDay >= 30 && <option value="30">30</option>}
             {maxDay === 31 && <option value="31">31</option>}
           </select>

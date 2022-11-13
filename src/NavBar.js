@@ -1,31 +1,43 @@
-import { Link } from "react-router-dom"
-import { useContext } from "react"
-import { AppContext } from "./AppContext"
-import LightModeIcon from "./LightModeIcon"
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AppContext } from "./AppContext";
+import LightModeIcon from "./LightModeIcon";
 
-export default function NavBar () {
-    const { isLoggedIn, setIsLoggedIn, setBookmarks, bookmarks, setSelectedDate  } = useContext(AppContext);
+export default function NavBar() {
+  const {
+    isLoggedIn,
+    setIsLoggedIn,
+    setBookmarks,
+    bookmarks,
+    setSelectedDate,
+  } = useContext(AppContext);
 
-    function handleLogoutClick() {
-        setIsLoggedIn(false)
-        setBookmarks([])
-        setSelectedDate("");
-    }
+  function handleLogoutClick() {
+    setIsLoggedIn(false);
+    setBookmarks([]);
+    setSelectedDate("");
+  }
 
-    return (
-        <nav className="nav-bar">
-            <div className="nav-left">
-              <Link to="/" className="nav-items" onClick={() => setSelectedDate("")}>
-                Home
-              </Link>
-            </div>  
-            <div className="nav-right">
-              {<LightModeIcon/>}
-              <Link to="/bookmarks" className="nav-items">{bookmarks.length === 0 ? "Bookmarks" : `Bookmarks (${bookmarks.length})`}</Link>
-              {isLoggedIn && <Link to="/" className="nav-items" onClick={handleLogoutClick}>
-                Log out
-              </Link>}
-            </div>
-        </nav>
-        )
+  return (
+    <nav className="nav-bar">
+      <div className="nav-left">
+        <Link to="/" className="nav-items" onClick={() => setSelectedDate("")}>
+          Home
+        </Link>
+      </div>
+      <div className="nav-right">
+        {<LightModeIcon />}
+        <Link to="/bookmarks" className="nav-items">
+          {bookmarks.length === 0
+            ? "Bookmarks"
+            : `Bookmarks (${bookmarks.length})`}
+        </Link>
+        {isLoggedIn && (
+          <Link to="/" className="nav-items" onClick={handleLogoutClick}>
+            Log out
+          </Link>
+        )}
+      </div>
+    </nav>
+  );
 }

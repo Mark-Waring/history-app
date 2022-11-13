@@ -5,20 +5,17 @@ import DateSelector from "./DateSelector";
 import CategoryDisplay from "./CategoryDisplay";
 import { Outlet } from "react-router-dom";
 
-
 export default function Main() {
-    const { isLoggedIn, selectedDate } = useContext(AppContext)
-    
-    if (!isLoggedIn) {
-        return (
-            <LoginForm />
-        )
-    }
-    return (
-        <>
-            <DateSelector />
-            {selectedDate && <CategoryDisplay />}
-            <Outlet />
-        </>
-    )
+  const { isLoggedIn, selectedDate } = useContext(AppContext);
+
+  if (!isLoggedIn) {
+    return <LoginForm />;
+  }
+  return (
+    <>
+      <DateSelector />
+      {selectedDate && <CategoryDisplay />}
+      <Outlet />
+    </>
+  );
 }

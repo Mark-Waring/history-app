@@ -43,16 +43,24 @@ export default function Events() {
           {displayedCategories[category]} on {displayedDate}
         </h2>
       }
-      {category !== "holidays" &&
-      <>
-        <label htmlFor={"sort-order"} className={"sort-label"}>Sort by: </label>
-        <select id="sort-order" name="sort-order" value={sortOrder} onChange={() => {
+      {category !== "holidays" && (
+        <>
+          <label htmlFor={"sort-order"} className={"sort-label"}>
+            Sort by:{" "}
+          </label>
+          <select
+            id="sort-order"
+            name="sort-order"
+            value={sortOrder}
+            onChange={() => {
               setSortOrder((curr) => (curr === "ASC" ? "DESC" : "ASC"));
-            }}>
-          <option value="DESC">Descending</option>
-          <option value="ASC">Ascending</option>
-        </select>
-      </>}
+            }}
+          >
+            <option value="DESC">Descending</option>
+            <option value="ASC">Ascending</option>
+          </select>
+        </>
+      )}
       <div className="events-container">
         {data[category]
           .sort((a, b) => {
