@@ -88,6 +88,11 @@ a:visited {
 }
 
 .category-container,
+.date-selection {
+  justify-content: center;
+}
+
+.category-container,
 .events-container {
   flex-wrap: wrap;
 }
@@ -157,6 +162,10 @@ a:visited {
 .event-description,
 .bookmark-button {
   margin: 10px;
+}
+
+#categories-dropwdown {
+  text-align: center;
 }
 
 .event-year {
