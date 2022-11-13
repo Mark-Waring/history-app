@@ -5,6 +5,7 @@ export default function Event ({thumbnail, description, page, year}) {
   const { onBookmarkAdd, onBookmarkRemove, bookmarks } = useContext(AppContext)
   return (
     ( <div className="event">
+      <div className="border-class">
         <a href={page} target="blank" className="image-link">
           <img className ="event-image"
             src={thumbnail}
@@ -18,8 +19,9 @@ export default function Event ({thumbnail, description, page, year}) {
             <a href={page} target="blank">Learn More</a>
         </div>
         {!bookmarks.some(bookmark => description === bookmark.description) ?
-         <button onClick={() => onBookmarkAdd({thumbnail, description, page, year})}>Bookmark</button> :
-         <button onClick={() => onBookmarkRemove({thumbnail, description, page, year})}>Remove Bookmark</button>}
+         <button className={"bookmark-button"} onClick={() => onBookmarkAdd({thumbnail, description, page, year})}>Bookmark</button> :
+         <button className={"bookmark-button"} onClick={() => onBookmarkRemove({thumbnail, description, page, year})}>Remove Bookmark</button>}
+         </div>
       </div>
    )
   )
