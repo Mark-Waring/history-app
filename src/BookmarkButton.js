@@ -1,9 +1,10 @@
 
 export default function BookmarkButton ({onBookmarkClick, children}) {
     return (
-        <button 
+        <button
             className="bookmark-button"
-            onClick={onBookmarkClick}>
+            onClick={onBookmarkClick}
+        >
             {children}
         </button>
     )

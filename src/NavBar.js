@@ -14,14 +14,18 @@ export default function NavBar () {
 
     return (
         <nav className="nav-bar">
-            {isLoggedIn && <Link to="/" className="nav-items" onClick={handleLogoutClick}>
-              Log out
-            </Link>}
-            <Link to="/bookmarks" className="nav-items">{bookmarks.length === 0 ? "Bookmarks" : `Bookmarks (${bookmarks.length})`}</Link>
-            {<LightModeIcon/>}
-            <Link to="/"className="nav-home" onClick={() => setSelectedDate("")}>
-              Home
-            </Link>          
+            <div className="nav-left">
+              <Link to="/" className="nav-items" onClick={() => setSelectedDate("")}>
+                Home
+              </Link>
+            </div>  
+            <div className="nav-right">
+              {<LightModeIcon/>}
+              <Link to="/bookmarks" className="nav-items">{bookmarks.length === 0 ? "Bookmarks" : `Bookmarks (${bookmarks.length})`}</Link>
+              {isLoggedIn && <Link to="/" className="nav-items" onClick={handleLogoutClick}>
+                Log out
+              </Link>}
+            </div>
         </nav>
         )
 }

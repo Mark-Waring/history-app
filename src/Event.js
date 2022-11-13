@@ -1,5 +1,6 @@
 import { AppContext } from "./AppContext"
 import { useContext } from "react"
+import BookmarkButton from "./BookmarkButton"
 
 export default function Event ({thumbnail, description, page, year}) {
   const { onBookmarkAdd, onBookmarkRemove, bookmarks } = useContext(AppContext)
@@ -10,18 +11,20 @@ export default function Event ({thumbnail, description, page, year}) {
           <img className ="event-image"
             src={thumbnail}
             alt={description}
-            style={{background: "white"}}
             />
         </a>
         <div className="event-caption">
             <h3 className="event-year">{year}</h3>
-            <p className="event-description">{description}</p>
+            <p 
+              className="event-description"
+              style={{marginTop: year ? "10px" : "0px"}}
+              >{description}</p>
             <a href={page} target="blank">Learn More</a>
         </div>
         {!bookmarks.some(bookmark => description === bookmark.description) ?
-         <button className={"bookmark-button"} onClick={() => onBookmarkAdd({thumbnail, description, page, year})}>Bookmark</button> :
-         <button className={"bookmark-button"} onClick={() => onBookmarkRemove({thumbnail, description, page, year})}>Remove Bookmark</button>}
-         </div>
+        <BookmarkButton onBookmarkClick={() => onBookmarkAdd({thumbnail, description, page, year})} children="Bookmark"/>
+        :  <BookmarkButton onBookmarkClick={() => onBookmarkRemove({thumbnail, description, page, year})} children="Remove Bookmark"/>}
+        </div>
       </div>
    )
   )

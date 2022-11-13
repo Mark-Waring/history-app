@@ -10,10 +10,10 @@ export default function LoginForm() {
     }
     
     return (
-      <div className="login-form">
-        <h3 className="login-items">Please log in</h3>
+      <div>
+        <h3>Please log in</h3>
         <Link to="/">
-        <button className="login-items login-button" onClick={handleLoginClick}>Log in</button>
+        <button onClick={handleLoginClick}>Log in</button>
         </Link>
       </div>
     )
