@@ -182,7 +182,10 @@ a:visited {
     min-width: fit-content;
   }
   .category {
-    width: 100%;
+    min-width: 100%;
+  }
+  h2{
+    margin-bottom: 10px;
   }
 }
 
