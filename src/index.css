@@ -9,7 +9,9 @@ body, .event-year {
   margin: 0px;
 }
 
-h1 {
+h1,
+.login-label,
+.login-submit {
   margin-top: 10px;
 }
 
@@ -99,17 +101,18 @@ a:visited {
 .nav-bar,
 .nav-left,
 .nav-right,
-.login-div {
+.login-form,
+.login-container {
   display: flex;
 }
 
 .date-selection {
-  justify-content: center;
   margin-bottom: 10px;
 }
 
 .category-container,
-.date-selection {
+.date-selection,
+.login-container {
   justify-content: center;
 }
 
@@ -143,7 +146,8 @@ a:visited {
 
 .event-caption,
 .event-border,
-.login-div {
+.login-form
+.login-container {
   flex-flow: column wrap;
 }
 
@@ -157,12 +161,19 @@ a:visited {
 }
 
 .image-link,
-.bookmark-button {
+.bookmark-button,
+.login-submit {
   align-self: center;
 }
 
-.login-div {
-  align-items: center;
+
+.login-container,
+.login-form {
+  justify-content: center;
+}
+
+.login-submit {
+  width: 50%;
 }
 
 .event-image {
