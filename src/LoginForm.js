@@ -10,7 +10,7 @@ export default function LoginForm() {
   }
 
   return (
-    <div>
+    <div className="login-div">
       <h3>Please log in</h3>
       <Link to="/">
         <button onClick={handleLoginClick}>Log in</button>

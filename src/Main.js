@@ -3,10 +3,11 @@ import { useContext } from "react";
 import LoginForm from "./LoginForm";
 import DateSelector from "./DateSelector";
 import CategoryDisplay from "./CategoryDisplay";
-import { Outlet } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 
 export default function Main() {
-  const { isLoggedIn, selectedDate } = useContext(AppContext);
+  const { isLoggedIn } = useContext(AppContext);
+  const { category } = useParams();
 
   if (!isLoggedIn) {
     return <LoginForm />;
@@ -14,7 +15,7 @@ export default function Main() {
   return (
     <>
       <DateSelector />
-      {selectedDate && <CategoryDisplay />}
+      {category && <CategoryDisplay />}
       <Outlet />
     </>
   );

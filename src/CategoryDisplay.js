@@ -1,9 +1,11 @@
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AppContext } from "./AppContext";
 
 export default function CategoryDisplay() {
   const [mobileCat, setMobileCat] = useState("events");
+  const { selectedDate } = useContext(AppContext);
   const { category } = useParams();
   const isMobile = useMediaQuery({
     query: "(max-width: 600px)",
@@ -22,12 +24,16 @@ export default function CategoryDisplay() {
     setMobileCat(category);
   }, [category]);
 
+  if (!selectedDate) {
+    return;
+  }
+
   return (
     <div className="category-container">
       {!isMobile ? (
         <>
           {categories.map((val) => (
-            <NavLink className="category" to={val.val}>
+            <NavLink className="category" key={val.val} to={val.val}>
               {val.display}
             </NavLink>
           ))}

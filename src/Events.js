@@ -21,7 +21,7 @@ export default function Events() {
   );
 
   if (isLoading) {
-    return <div>Loading....</div>;
+    return <div>Loading...</div>;
   }
 
   if (error) {
@@ -64,8 +64,8 @@ export default function Events() {
       <div className="events-container">
         {data[category]
           .sort((a, b) => {
-            if (sortOrder === "ASC") return a.year - b.year;
-            return b.year - a.year;
+            if (sortOrder === "ASC") return a?.year - b?.year;
+            return b?.year - a?.year;
           })
           .map((event, idx) => {
             return (

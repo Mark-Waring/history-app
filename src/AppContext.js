@@ -3,7 +3,7 @@ import { useState, createContext } from "react";
 export const AppContext = createContext();
 
 export function AppProvider(props) {
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState("01/01");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [bookmarks, setBookmarks] = useState([]);

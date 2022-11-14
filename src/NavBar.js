@@ -15,13 +15,13 @@ export default function NavBar() {
   function handleLogoutClick() {
     setIsLoggedIn(false);
     setBookmarks([]);
-    setSelectedDate("");
+    setSelectedDate("01/01");
   }
 
   return (
     <nav className="nav-bar">
       <div className="nav-left">
-        <Link to="/" className="nav-items" onClick={() => setSelectedDate("")}>
+        <Link to="/" className="nav-items">
           Home
         </Link>
       </div>

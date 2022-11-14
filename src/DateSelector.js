@@ -5,8 +5,9 @@ import { AppContext } from "./AppContext";
 export default function DateSelector() {
   const { setSelectedDate, selectedDate, setDisplayedDate } =
     useContext(AppContext);
-  const [month, setMonth] = useState("01");
-  const [day, setDay] = useState("01");
+
+  const [month, setMonth] = useState(selectedDate.slice(0, 2));
+  const [day, setDay] = useState(selectedDate.slice(-2));
   const dayNumber = parseInt(day);
 
   const months = [
@@ -53,13 +54,12 @@ export default function DateSelector() {
   }
 
   useEffect(() => {
-    setDisplayedDate(`${months[month - 1].display} ${dayNumber}`);
+    setDisplayedDate(`${months[month - 1]?.display} ${dayNumber}`);
     // eslint-disable-next-line
   }, [selectedDate]);
 
   return (
     <>
-      <h3>Select a Date</h3>
       <div className="date-selection">
         <div className="date-container">
           <Link to="/events">
