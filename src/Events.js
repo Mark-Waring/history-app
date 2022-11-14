@@ -21,7 +21,7 @@ export default function Events() {
   );
 
   if (isLoading) {
-    return <h3>Loading....</h3>;
+    return <div>Loading....</div>;
   }
 
   if (error) {
@@ -39,9 +39,9 @@ export default function Events() {
   return (
     <>
       {
-        <h2>
+        <h3>
           {displayedCategories[category]} on {displayedDate}
-        </h2>
+        </h3>
       }
       {category !== "holidays" && (
         <>

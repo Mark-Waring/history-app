@@ -1,42 +1,53 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
+import { useState, useEffect } from "react";
 
 export default function CategoryDisplay() {
+  const [mobileCat, setMobileCat] = useState("events");
+  const { category } = useParams();
   const isMobile = useMediaQuery({
     query: "(max-width: 600px)",
   });
   let navigate = useNavigate();
 
+  const categories = [
+    { val: "events", display: "Historical Events" },
+    { val: "births", display: "Birthdays" },
+    { val: "deaths", display: "Deaths" },
+    { val: "holidays", display: "Holidays" },
+    { val: "selected", display: "Other Events" },
+  ];
+
+  useEffect(() => {
+    setMobileCat(category);
+  }, [category]);
+
   return (
     <div className="category-container">
       {!isMobile ? (
         <>
-          <NavLink className="category" to="events">
-            Historical Events
-          </NavLink>
-          <NavLink className="category" to="births">
-            Birthdays
-          </NavLink>
-          <NavLink className="category" to="deaths">
-            Deaths
-          </NavLink>
-          <NavLink className="category" to="holidays">
-            Holidays
-          </NavLink>
-          <NavLink className="category" to="selected">
-            Other Events
-          </NavLink>
+          {categories.map((val) => (
+            <NavLink className="category" to="val.val">
+              {val.display}
+            </NavLink>
+          ))}
         </>
       ) : (
         <select
-          onChange={(e) => navigate(e.target.value)}
-          id="categories-dropdown"
+          id="category"
+          name="category"
+          style={{ width: "40%", textAlign: "center" }}
+          value={mobileCat}
+          onChange={(e) => {
+            setMobileCat(e.target.value);
+            navigate(e.target.value);
+          }}
         >
-          <option value="events">Historical Events</option>
-          <option value="births">Birthdays</option>
-          <option value="deaths">Deaths</option>
-          <option value="holidays">Holidays</option>
-          <option value="selected">Other Events</option>
+          {categories.map((val) => (
+            <option key={val.val} value={val.val}>
+              {val.display}
+            </option>
+          ))}
         </select>
       )}
     </div>

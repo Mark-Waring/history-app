@@ -59,7 +59,7 @@ export default function DateSelector() {
 
   return (
     <>
-      <h2>Select a Date</h2>
+      <h3>Select a Date</h3>
       <div className="date-selection">
         <div className="date-container">
           <Link to="/events">
