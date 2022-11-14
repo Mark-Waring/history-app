@@ -17,6 +17,13 @@ h1, h3 {
   margin-bottom: 0px;
 }
 
+.dark select,
+.dark button {
+  border: 1px solid white;
+  background-color: black;
+  color: white
+}
+
 
 .dark {
     color: white;
@@ -25,7 +32,7 @@ h1, h3 {
   }
 
 
-h1, h3,
+h1, h3, h2,
 .category,
 .event {
     text-align: center;
