@@ -195,7 +195,13 @@ h3 {
   .category {
     min-width: 90%;
   }
+
+  h1 {
+    font-size: x-large;
+  }
+
   h3{
+    font-size: large;
     margin-bottom: 10px;
   }
 }
