@@ -4,17 +4,11 @@ import { AppContext } from "./AppContext";
 import LightModeIcon from "./LightModeIcon";
 
 export default function NavBar() {
-  const {
-    isLoggedIn,
-    setIsLoggedIn,
-    setBookmarks,
-    bookmarks,
-    setSelectedDate,
-  } = useContext(AppContext);
+  const { isLoggedIn, setIsLoggedIn, bookmarks, setSelectedDate } =
+    useContext(AppContext);
 
   function handleLogoutClick() {
     setIsLoggedIn(false);
-    setBookmarks([]);
     setSelectedDate("01/01");
   }
 
@@ -28,7 +22,7 @@ export default function NavBar() {
       <div className="nav-right">
         {<LightModeIcon />}
         <Link to="/bookmarks" className="nav-items">
-          {bookmarks.length === 0
+          {bookmarks.length === 0 || !isLoggedIn
             ? "Bookmarks"
             : `Bookmarks (${bookmarks.length})`}
         </Link>

@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 
 export const AppContext = createContext();
 
@@ -6,9 +6,21 @@ export function AppProvider(props) {
   const [selectedDate, setSelectedDate] = useState("01/01");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
-  const [bookmarks, setBookmarks] = useState([]);
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [bookmarks, setBookmarks] = useState(
+    () => JSON.parse(localStorage.getItem("bookmarks")) ?? []
+  );
+  const [isDarkTheme, setIsDarkTheme] = useState(() =>
+    JSON.parse(localStorage.getItem("is_dark_theme") === "true")
+  );
   const [displayedDate, setDisplayedDate] = useState(null);
+
+  useEffect(() => {
+    localStorage.setItem("is_dark_theme", JSON.stringify(isDarkTheme));
+  }, [isDarkTheme]);
+
+  useEffect(() => {
+    localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+  }, [bookmarks]);
 
   function handleBookmarkAdd(newBookmark) {
     setBookmarks([...bookmarks, { ...newBookmark }]);
