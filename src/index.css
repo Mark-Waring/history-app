@@ -1,11 +1,10 @@
 body {
   background-color: #E0E0E0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
-body, .event-year {
+body,
+.event-year {
   margin: 0px;
 }
 
@@ -36,21 +35,33 @@ h3 {
   background-color: #202020;
 }
 
+.dark button:hover {
+  opacity: 85%
+}
+
+.dark button:active {
+  transform: scale(.98);
+}
+
+.dark a:active {
+  color: blue;
+}
+
 .dark .bookmark-button {
   background-color: black;
 }
 
-
 .dark {
-    min-height: 100vh;
-  }
+  min-height: 100vh;
+}
 
-
-h1, h3, h2,
+h1,
+h3,
+h2,
 .category,
 .event {
-    text-align: center;
-  }
+  text-align: center;
+}
 
 .nav-bar {
   background-color: white;
@@ -76,23 +87,23 @@ h1, h3, h2,
 }
 
 a:visited {
-  color:blue;
+  color: blue;
 }
 
 .dark a {
   color: white;
 }
 
-
 .date-button,
 .nav-items {
   margin: 5px;
 }
 
-.light-dark-icon{
+.light-dark-icon {
   width: 21px;
   height: 21px;
 }
+
 .category-container,
 .date-selection,
 .events-container,
@@ -130,7 +141,7 @@ a:visited {
   font-weight: bold;
 }
 
-.active{
+.active {
   opacity: 75%;
   pointer-events: none;
   font-weight: normal;
@@ -146,11 +157,9 @@ a:visited {
 
 .event-caption,
 .event-border,
-.login-form
-.login-container {
+.login-form .login-container {
   flex-flow: column wrap;
 }
-
 
 .event {
   margin: 1.5%;
@@ -165,7 +174,6 @@ a:visited {
 .login-submit {
   align-self: center;
 }
-
 
 .login-container,
 .login-form {
@@ -230,6 +238,7 @@ h3 {
   .event {
     min-width: fit-content;
   }
+
   .category {
     min-width: 90%;
   }
@@ -238,11 +247,8 @@ h3 {
     font-size: x-large;
   }
 
-  h3{
+  h3 {
     font-size: large;
     margin-bottom: 10px;
   }
 }
-
-
-
