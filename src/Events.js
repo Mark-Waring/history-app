@@ -129,8 +129,8 @@ export default function Events() {
       <div className="events-container">
         {itemsToMap
           ?.sort((a, b) => {
-            if (!viewAll || sortOrder === "ASC") return a?.year - b?.year;
-            return b?.year - a?.year;
+            if (!viewAll || sortOrder === "DESC") return b?.year - a?.year;
+            return a?.year - b?.year;
           })
           .map((event, idx) => {
             return (
