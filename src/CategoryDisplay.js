@@ -24,7 +24,7 @@ export default function CategoryDisplay() {
 
   if (!isMobile) {
     return (
-      <div class="category-container">
+      <div className="category-container">
         {categories.map((val) => (
           <NavLink className="category" key={val.val} to={val.val}>
             {val.display}
