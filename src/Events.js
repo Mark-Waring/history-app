@@ -38,13 +38,12 @@ export default function Events() {
   useEffect(() => {
     const endOffset = itemOffset + 10;
     setCurrentItems(filtered?.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(filtered?.length / 10));
-  }, [itemOffset, category]);
+  }, [itemOffset]);
 
   useEffect(() => {
     setCurrentItems(filtered?.slice(0, 10));
     setPageCount(Math.ceil(filtered?.length / 10));
-  }, [data, viewAll]);
+  }, [data, viewAll, category]);
 
   if (isLoading) {
     return <div>Loading...</div>;
