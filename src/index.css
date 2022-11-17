@@ -32,14 +32,11 @@
   background: grey;
 }
 
-
 .pagination {
   padding: 0px;
   margin-bottom: 0px;
   margin-top: 5px;
 }
-
-
 
 body {
   background-color: #E0E0E0;
@@ -239,8 +236,6 @@ a:visited {
   max-width: 65%;
 }
 
-
-
 .event-caption,
 .event-image {
   margin-bottom: 5px;
@@ -268,8 +263,6 @@ h2 {
 .dark .event-year {
   background-color: #002366;
 }
-
-
 
 .page-item,
 .event-image {
