@@ -3,7 +3,7 @@ import { useContext, useState, useEffect, useRef } from "react";
 import { AppContext } from "./AppContext";
 import { useQuery } from "react-query";
 import Event from "./Event";
-import ReactPaginate from "https://cdn.skypack.dev/react-paginate@7.1.3";
+import ReactPaginate from "react-paginate";
 
 export default function Events() {
   const { selectedDate, displayedDate } = useContext(AppContext);
@@ -15,15 +15,17 @@ export default function Events() {
   const [viewAll, setViewAll] = useState(false);
   const displayed = useRef();
 
-  const { isLoading, error, data } = useQuery(["eventData", selectedDate], () =>
-    fetch(
-      `https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/all/${selectedDate}`
-    ).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return <div>Something went wrong</div>;
-    })
+  const { isLoading, error, data } = useQuery(
+    ["eventData", selectedDate, category],
+    () =>
+      fetch(
+        `https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/${category}/${selectedDate}`
+      ).then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return <div>Something went wrong</div>;
+      })
   );
 
   const filtered =
@@ -39,12 +41,26 @@ export default function Events() {
       return;
     }
     if (displayed.current === data[category]) {
-      return setCurrentItems(filtered?.slice(itemOffset, itemOffset + 10));
+      return setCurrentItems(filtered.slice(itemOffset, itemOffset + 10));
     }
     displayed.current = data[category];
     setCurrentItems(filtered?.slice(0, 10));
+    setPageCount(Math.ceil(filtered.length / 10));
+    setViewAll(false);
+    // eslint-disable-next-line
+  }, [itemOffset, data]);
+
+  useEffect(() => {
+    if (!data) {
+      return;
+    }
+    if (displayed.current !== data[category]) {
+      return;
+    }
+    setCurrentItems(filtered?.slice(0, 10));
     setPageCount(Math.ceil(filtered?.length / 10));
-  }, [itemOffset, data, viewAll, category]);
+    // eslint-disable-next-line
+  }, [viewAll]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -78,7 +94,7 @@ export default function Events() {
               type="checkbox"
               id="view-all"
               name="view-all"
-              value="view-all"
+              value="{viewAll}"
               onChange={() => setViewAll(!viewAll)}
             />
             <label htmlFor="view-all">View All</label>
