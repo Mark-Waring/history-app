@@ -41,7 +41,6 @@ export default function Events() {
     }
     setCurrentItems(filtered.slice(itemOffset, itemOffset + 10));
     setCurrentPage(itemOffset / 10);
-    console.log("hitting page");
   }, [itemOffset]);
 
   useEffect(() => {
@@ -51,12 +50,10 @@ export default function Events() {
     if (initialSelection.current) {
       setCurrentItems(filtered.slice(0, 10));
       setCurrentPage(0);
-      console.log("hiting inital");
       initialSelection.current = false;
     }
     setItemOffset(0);
     setPageCount(Math.ceil(filtered.length / 10));
-    console.log("hitting initial and subsequent");
   }, [data, category, viewAll]);
 
   if (isLoading) {
