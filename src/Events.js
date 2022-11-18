@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { AppContext } from "./AppContext";
 import { useQuery } from "react-query";
 import Event from "./Event";
@@ -14,6 +14,7 @@ export default function Events() {
   const [currentPage, setCurrentPage] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const [viewAll, setViewAll] = useState(false);
+  const initialSelection = useRef(true);
 
   const { isLoading, error, data } = useQuery(["eventData", selectedDate], () =>
     fetch(
@@ -40,14 +41,22 @@ export default function Events() {
     }
     setCurrentItems(filtered.slice(itemOffset, itemOffset + 10));
     setCurrentPage(itemOffset / 10);
+    console.log("hitting page");
   }, [itemOffset]);
 
   useEffect(() => {
     if (!data) {
       return;
     }
+    if (initialSelection.current) {
+      setCurrentItems(filtered.slice(0, 10));
+      setCurrentPage(0);
+      console.log("hiting inital");
+      initialSelection.current = false;
+    }
     setItemOffset(0);
     setPageCount(Math.ceil(filtered.length / 10));
+    console.log("hitting initial and subsequent");
   }, [data, category, viewAll]);
 
   if (isLoading) {
