@@ -20,17 +20,17 @@ export default function NavBar() {
         </Link>
       </div>
       <div className="nav-right">
-        {<LightModeIcon />}
         <Link to="/bookmarks" className="nav-items">
           {bookmarks.length === 0 || !isLoggedIn
             ? "Bookmarks"
             : `Bookmarks (${bookmarks.length})`}
         </Link>
-        {isLoggedIn && (
+        {/* {isLoggedIn && (
           <Link to="/" className="nav-items" onClick={handleLogoutClick}>
             Log out
           </Link>
-        )}
+        )} */}
+        {<LightModeIcon />}
       </div>
     </nav>
   );

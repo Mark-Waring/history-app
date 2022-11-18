@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useContext, useState, useEffect, useRef } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AppContext } from "./AppContext";
 import { useQuery } from "react-query";
 import Event from "./Event";
@@ -11,28 +11,26 @@ export default function Events() {
   const [sortOrder, setSortOrder] = useState("DESC");
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const [viewAll, setViewAll] = useState(false);
-  const displayed = useRef();
 
-  const { isLoading, error, data } = useQuery(
-    ["eventData", selectedDate, category],
-    () =>
-      fetch(
-        `https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/${category}/${selectedDate}`
-      ).then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return <div>Something went wrong</div>;
-      })
+  const { isLoading, error, data } = useQuery(["eventData", selectedDate], () =>
+    fetch(
+      `https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/all/${selectedDate}`
+    ).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return <div>Something went wrong</div>;
+    })
   );
 
   const filtered =
     data && data[category].filter((event) => event.pages[0].thumbnail);
 
-  const handlePageClick = (event) => {
-    const newOffset = data && (event.selected * 10) % filtered?.length;
+  const handlePageClick = ({ selected }) => {
+    const newOffset = data && (selected * 10) % filtered.length;
     setItemOffset(newOffset);
   };
 
@@ -40,27 +38,17 @@ export default function Events() {
     if (!data) {
       return;
     }
-    if (displayed.current === data[category]) {
-      return setCurrentItems(filtered.slice(itemOffset, itemOffset + 10));
-    }
-    displayed.current = data[category];
-    setCurrentItems(filtered?.slice(0, 10));
-    setPageCount(Math.ceil(filtered.length / 10));
-    setViewAll(false);
-    // eslint-disable-next-line
-  }, [itemOffset, data]);
+    setCurrentItems(filtered.slice(itemOffset, itemOffset + 10));
+    setCurrentPage(itemOffset / 10);
+  }, [itemOffset]);
 
   useEffect(() => {
     if (!data) {
       return;
     }
-    if (displayed.current !== data[category]) {
-      return;
-    }
-    setCurrentItems(filtered?.slice(0, 10));
-    setPageCount(Math.ceil(filtered?.length / 10));
-    // eslint-disable-next-line
-  }, [viewAll]);
+    setItemOffset(0);
+    setPageCount(Math.ceil(filtered.length / 10));
+  }, [data, category, viewAll]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -94,7 +82,7 @@ export default function Events() {
               type="checkbox"
               id="view-all"
               name="view-all"
-              value="{viewAll}"
+              defaultChecked={viewAll}
               onChange={() => setViewAll(!viewAll)}
             />
             <label htmlFor="view-all">View All</label>
@@ -125,6 +113,7 @@ export default function Events() {
               pageRangeDisplayed={9}
               marginPagesDisplayed={1}
               pageCount={pageCount}
+              forcePage={itemsToMap ? currentPage : -1}
               previousLabel="< Previous"
               pageClassName="page-item"
               pageLinkClassName="page-link"
