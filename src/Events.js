@@ -14,7 +14,6 @@ export default function Events() {
   const [currentPage, setCurrentPage] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const [viewAll, setViewAll] = useState(false);
-  const initialSelection = useRef(true);
 
   const { isLoading, error, data } = useQuery(["eventData", selectedDate], () =>
     fetch(
@@ -36,24 +35,19 @@ export default function Events() {
   };
 
   useEffect(() => {
-    if (!data) {
-      return;
+    if (data) {
+      setCurrentItems(filtered.slice(itemOffset, itemOffset + 10));
+      setCurrentPage(itemOffset / 10);
     }
-    setCurrentItems(filtered.slice(itemOffset, itemOffset + 10));
-    setCurrentPage(itemOffset / 10);
   }, [itemOffset]);
 
   useEffect(() => {
-    if (!data) {
-      return;
-    }
-    if (initialSelection.current) {
+    if (data) {
       setCurrentItems(filtered.slice(0, 10));
       setCurrentPage(0);
-      initialSelection.current = false;
+      setItemOffset(0);
+      setPageCount(Math.ceil(filtered.length / 10));
     }
-    setItemOffset(0);
-    setPageCount(Math.ceil(filtered.length / 10));
   }, [data, category, viewAll]);
 
   if (isLoading) {
